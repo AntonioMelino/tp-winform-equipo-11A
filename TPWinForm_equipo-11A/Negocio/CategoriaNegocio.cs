@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dominio;
 
-namespace TrabajoPracticoWinForm
+namespace Negocio
 {
-    internal class ArticuloNegocio
+    public class CategoriaNegocio
     {
+
     }
 }

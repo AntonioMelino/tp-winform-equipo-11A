@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dominio;
 
-namespace Dominio
+namespace Negocio
 {
-    public class Marca
+    public class MarcaNegocio
     {
-        public int ID { get; set; }
-        public string Descripcion { get; set; }
+
     }
 }

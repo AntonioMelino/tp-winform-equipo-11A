@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dominio;
 
-namespace Dominio
+namespace TrabajoPracticoWinForm
 {
-    public class Marca
+    public class ArticuloNegocio
     {
-        public int ID { get; set; }
-        public string Descripcion { get; set; }
+
     }
 }
