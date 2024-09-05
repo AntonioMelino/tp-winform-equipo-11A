@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dominio;
+using Negocio;
 
 namespace TrabajoPracticoWinForm
 {
     public partial class Form1 : Form
     {
+        private List<Articulo> lista;
         public Form1()
         {
             InitializeComponent();
@@ -31,7 +34,9 @@ namespace TrabajoPracticoWinForm
             cboCategoria.Items.Add("Audio");
 
             ArticuloNegocio negocio = new ArticuloNegocio();
-            dgvArticulos.DataSource = negocio.listar();
+            lista = negocio.listar();
+            dgvArticulos.DataSource = lista;
+
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -48,6 +53,16 @@ namespace TrabajoPracticoWinForm
             txtCodigo.Clear();
             txtDescripcion.Clear();
             txtPrecio.Clear();
+        }
+
+        private void cboMarca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -21,7 +21,7 @@ namespace TrabajoPracticoWinForm
             {
                 conexion.ConnectionString = "server=.\\SQLExpress; database=CATALOGO_P3_DB; integrated security=true";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "select * from ARTICULOS";
+                comando.CommandText = "SELECT A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion as NombreMarca, C.Descripcion as NombreCategoria, Precio FROM ARTICULOS as A, CATEGORIAS AS C, MARCAS AS M WHERE A.IdMarca = M.Id AND A.IdCategoria = C.Id";
                 comando.Connection = conexion;
 
                 conexion.Open();
@@ -36,10 +36,9 @@ namespace TrabajoPracticoWinForm
                     aux.Codigo = (string)lector["Codigo"];
                     aux.Nombre = (string)lector["Nombre"];
                     aux.Descripcion = (string)lector["Descripcion"];
-                    aux.Marca.ID = lector.GetInt32(4);
-                    aux.Categoria.ID = lector.GetInt32(5);
+                    aux.Marca.Descripcion = lector["NombreMarca"].ToString();
+                    aux.Categoria.Descripcion = lector["NombreCategoria"].ToString();
                     aux.Precio = (decimal)lector["Precio"];
-
                     lista.Add(aux);
 
                 }
