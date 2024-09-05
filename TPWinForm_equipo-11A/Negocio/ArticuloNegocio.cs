@@ -59,11 +59,26 @@ namespace TrabajoPracticoWinForm
         public void agregar(Articulo nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
+            SqlConnection conexion = new SqlConnection();
+            SqlCommand comando = new SqlCommand();
 
             try
             {
-                datos.setearConsulta("INSERT into ARTICULOS (Codigo, Nombre, Descripcion, Precio)VALUES('" + nuevo.Nombre + "','" + nuevo.Codigo + "','" + nuevo.Descripcion +"'," + nuevo.Precio + ")");
-                datos.ejecutarAccion();
+                conexion.ConnectionString = "server=.\\SQLExpress; database=CATALOGO_P3_DB; integrated security=true";
+                comando.CommandType = System.Data.CommandType.Text;
+                comando.CommandText = "INSERT INTO ARTICULOS VALUES (@Codigo, @Nombre, @Descripcion, @IdMarca, @IdCategoria, @Precio)";
+                comando.Parameters.Clear();
+                comando.Parameters.AddWithValue("@Codigo", nuevo.Codigo);
+                comando.Parameters.AddWithValue("@Nombre", nuevo.Nombre);
+                comando.Parameters.AddWithValue("@Descripcion", nuevo.Descripcion);
+                comando.Parameters.AddWithValue("@IdMarca", nuevo.Marca.ID);
+                comando.Parameters.AddWithValue("@IdCategoria", nuevo.Categoria.ID);
+                comando.Parameters.AddWithValue("@Precio", nuevo.Precio);
+                //datos.setearConsulta("INSERT into ARTICULOS (Codigo, Nombre, Descripcion, Precio, IdMarca, IdCategoria)VALUES('" + nuevo.Nombre + "','" + nuevo.Codigo + "','" + nuevo.Descripcion + "','" + nuevo.Precio + "','" + nuevo.Categoria.ID + "','" + nuevo.Marca.ID + ")");
+                //datos.ejecutarAccion();
+                comando.Connection = conexion;
+                conexion.Open();
+                comando.ExecuteNonQuery();
             }
             catch (Exception ex)
             {

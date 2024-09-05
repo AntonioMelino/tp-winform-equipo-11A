@@ -35,6 +35,8 @@ namespace TrabajoPracticoWinForm
                 articulo.Codigo = txtCodigoArticulo.Text;
                 articulo.Descripcion = txtDescripcionArticulo.Text;
                 articulo.Precio = decimal.Parse(txtPrecioArticulo.Text);
+                articulo.Marca = (Marca)cboMarca.SelectedItem;
+                articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
 
                 negocio.agregar(articulo);
                 MessageBox.Show("Agregado exitosamente");
@@ -44,6 +46,26 @@ namespace TrabajoPracticoWinForm
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void frmAltaArticulo_Load(object sender, EventArgs e)
+        {
+            CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+            MarcaNegocio marcaNegocio = new MarcaNegocio();
+            try
+            {
+            cboCategoria.DataSource = categoriaNegocio.listar();
+            cboMarca.DataSource = marcaNegocio.listar();
+            cboMarca.ValueMember = "Id";
+            cboCategoria.ValueMember = "Id";
+            cboMarca.DisplayMember = "Descripcion";
+            cboCategoria.DisplayMember = "Descripcion";
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
     }

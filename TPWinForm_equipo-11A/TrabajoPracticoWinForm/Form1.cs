@@ -26,17 +26,6 @@ namespace TrabajoPracticoWinForm
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            cboMarca.Items.Add("Samsung");
-            cboMarca.Items.Add("Apple");
-            cboMarca.Items.Add("Sony");
-            cboMarca.Items.Add("Huawei");
-            cboMarca.Items.Add("Motorola");
-
-            cboCategoria.Items.Add("Celulares");
-            cboCategoria.Items.Add("Televisores");
-            cboCategoria.Items.Add("Media");
-            cboCategoria.Items.Add("Audio");
-
             ArticuloNegocio negocio = new ArticuloNegocio();
             listaArticulo = negocio.listar();
             
