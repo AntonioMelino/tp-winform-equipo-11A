@@ -29,6 +29,9 @@ namespace TrabajoPracticoWinForm
             cboCategoria.Items.Add("Televisores");
             cboCategoria.Items.Add("Media");
             cboCategoria.Items.Add("Audio");
+
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            dgvArticulos.DataSource = negocio.listar();
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
