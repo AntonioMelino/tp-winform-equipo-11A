@@ -14,7 +14,11 @@ namespace TrabajoPracticoWinForm
 {
     public partial class Form1 : Form
     {
-        private List<Articulo> lista;
+        //private List<Articulo> lista;
+
+        private List<Articulo> listaArticulo;
+
+        private List<Marca> listaMarca;
         public Form1()
         {
             InitializeComponent();
@@ -34,9 +38,19 @@ namespace TrabajoPracticoWinForm
             cboCategoria.Items.Add("Audio");
 
             ArticuloNegocio negocio = new ArticuloNegocio();
-            lista = negocio.listar();
-            dgvArticulos.DataSource = lista;
+            listaArticulo = negocio.listar();
+            
+            dgvArticulos.DataSource = listaArticulo;
 
+            pbxArticulo.Load(listaArticulo[0].Imagen.ImagenUrl);
+            //cargarImagen(listaArticulo[0].Imagen.ImagenUrl);
+
+            //lista = negocio.listar();
+            //dgvArticulos.DataSource = lista;
+
+            MarcaNegocio negocioMarca = new MarcaNegocio();
+            listaMarca = negocioMarca.listar();
+            dvgMarcas.DataSource = listaMarca;
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -64,5 +78,34 @@ namespace TrabajoPracticoWinForm
         {
 
         }
+
+        private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
+        {
+            Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            //pbxArticulo.Load(seleccionado.Imagen.ImagenUrl);
+            //cargarImagen(seleccionado.Imagen.ImagenUrl);
+
+            try
+            {
+                pbxArticulo.Load(seleccionado.Imagen.ImagenUrl);
+            }
+            catch (Exception ex)
+            {
+                pbxArticulo.Load("https://t4.ftcdn.net/jpg/05/17/53/57/360_F_517535712_q7f9QC9X6TQxWi6xYZZbMmw5cnLMr279.jpg");
+            }
+
+        }
+
+        /*private void cargarImagen(ArticuloNegocio imagen)
+        {
+            try
+            {
+                pbxArticulo.Load();
+            }
+            catch (Exception ex)
+            {
+                pbxArticulo.Load("https://t4.ftcdn.net/jpg/05/17/53/57/360_F_517535712_q7f9QC9X6TQxWi6xYZZbMmw5cnLMr279.jpg");
+            }
+        }*/
     }
 }

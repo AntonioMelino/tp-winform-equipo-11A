@@ -21,7 +21,7 @@ namespace TrabajoPracticoWinForm
             {
                 conexion.ConnectionString = "server=.\\SQLExpress; database=CATALOGO_P3_DB; integrated security=true";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "SELECT A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion as NombreMarca, C.Descripcion as NombreCategoria, Precio FROM ARTICULOS as A, CATEGORIAS AS C, MARCAS AS M WHERE A.IdMarca = M.Id AND A.IdCategoria = C.Id";
+                comando.CommandText = "SELECT A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion as NombreMarca, C.Descripcion as NombreCategoria, Precio, ImagenUrl FROM ARTICULOS as A, CATEGORIAS AS C, MARCAS AS M, IMAGENES AS I WHERE A.IdMarca = M.Id AND A.IdCategoria = C.Id AND A.Id = I.IdArticulo";
                 comando.Connection = conexion;
 
                 conexion.Open();
@@ -32,6 +32,7 @@ namespace TrabajoPracticoWinForm
                     Articulo aux = new Articulo();
                     aux.Marca = new Marca();
                     aux.Categoria = new Categoria();
+                    aux.Imagen = new Imagen();
                     aux.ID = (int)lector["Id"];
                     aux.Codigo = (string)lector["Codigo"];
                     aux.Nombre = (string)lector["Nombre"];
@@ -39,6 +40,7 @@ namespace TrabajoPracticoWinForm
                     aux.Marca.Descripcion = lector["NombreMarca"].ToString();
                     aux.Categoria.Descripcion = lector["NombreCategoria"].ToString();
                     aux.Precio = (decimal)lector["Precio"];
+                    aux.Imagen.ImagenUrl = (string)lector["ImagenUrl"];
                     lista.Add(aux);
 
                 }

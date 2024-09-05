@@ -15,6 +15,6 @@ namespace Dominio
         public Marca Marca { get; set; }
         public Categoria Categoria { get; set; }
         public decimal Precio { get; set; }
-        // DUDAS CON IMAGENES, no se agrega aun en articulo. Se tiene que debatir.
+        public Imagen Imagen { get; set; }
     }
 }

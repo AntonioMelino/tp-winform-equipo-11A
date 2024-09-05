@@ -44,19 +44,25 @@
             this.cboMarca = new System.Windows.Forms.ComboBox();
             this.cboCategoria = new System.Windows.Forms.ComboBox();
             this.dgvArticulos = new System.Windows.Forms.DataGridView();
+            this.pbxArticulo = new System.Windows.Forms.PictureBox();
+            this.lblTablaArticulos = new System.Windows.Forms.Label();
+            this.lblMarcas = new System.Windows.Forms.Label();
+            this.dvgMarcas = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dvgMarcas)).BeginInit();
             this.SuspendLayout();
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(143, 107);
+            this.txtNombre.Location = new System.Drawing.Point(81, 329);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(184, 20);
             this.txtNombre.TabIndex = 0;
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(77, 286);
+            this.btnAgregar.Location = new System.Drawing.Point(15, 508);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(250, 23);
             this.btnAgregar.TabIndex = 6;
@@ -66,13 +72,10 @@
             // 
             // lwArticulos
             // 
-            this.lwArticulos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.lwArticulos.HideSelection = false;
-            this.lwArticulos.Location = new System.Drawing.Point(372, 107);
+            this.lwArticulos.Location = new System.Drawing.Point(271, 329);
             this.lwArticulos.Name = "lwArticulos";
-            this.lwArticulos.Size = new System.Drawing.Size(390, 202);
+            this.lwArticulos.Size = new System.Drawing.Size(400, 203);
             this.lwArticulos.TabIndex = 8;
             this.lwArticulos.UseCompatibleStateImageBehavior = false;
             this.lwArticulos.View = System.Windows.Forms.View.List;
@@ -80,7 +83,7 @@
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(97, 107);
+            this.lblNombre.Location = new System.Drawing.Point(31, 329);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(44, 13);
             this.lblNombre.TabIndex = 4;
@@ -89,7 +92,7 @@
             // lblCategoria
             // 
             this.lblCategoria.AutoSize = true;
-            this.lblCategoria.Location = new System.Drawing.Point(85, 224);
+            this.lblCategoria.Location = new System.Drawing.Point(23, 446);
             this.lblCategoria.Name = "lblCategoria";
             this.lblCategoria.Size = new System.Drawing.Size(52, 13);
             this.lblCategoria.TabIndex = 9;
@@ -98,7 +101,7 @@
             // lblMarca
             // 
             this.lblMarca.AutoSize = true;
-            this.lblMarca.Location = new System.Drawing.Point(97, 198);
+            this.lblMarca.Location = new System.Drawing.Point(35, 420);
             this.lblMarca.Name = "lblMarca";
             this.lblMarca.Size = new System.Drawing.Size(37, 13);
             this.lblMarca.TabIndex = 10;
@@ -107,7 +110,7 @@
             // lblPrecio
             // 
             this.lblPrecio.AutoSize = true;
-            this.lblPrecio.Location = new System.Drawing.Point(100, 250);
+            this.lblPrecio.Location = new System.Drawing.Point(38, 472);
             this.lblPrecio.Name = "lblPrecio";
             this.lblPrecio.Size = new System.Drawing.Size(37, 13);
             this.lblPrecio.TabIndex = 12;
@@ -116,7 +119,7 @@
             // lblDescripcion
             // 
             this.lblDescripcion.AutoSize = true;
-            this.lblDescripcion.Location = new System.Drawing.Point(74, 172);
+            this.lblDescripcion.Location = new System.Drawing.Point(12, 394);
             this.lblDescripcion.Name = "lblDescripcion";
             this.lblDescripcion.Size = new System.Drawing.Size(63, 13);
             this.lblDescripcion.TabIndex = 13;
@@ -125,7 +128,7 @@
             // lblCodigo
             // 
             this.lblCodigo.AutoSize = true;
-            this.lblCodigo.Location = new System.Drawing.Point(97, 137);
+            this.lblCodigo.Location = new System.Drawing.Point(35, 359);
             this.lblCodigo.Name = "lblCodigo";
             this.lblCodigo.Size = new System.Drawing.Size(40, 13);
             this.lblCodigo.TabIndex = 8;
@@ -133,21 +136,21 @@
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Location = new System.Drawing.Point(143, 137);
+            this.txtCodigo.Location = new System.Drawing.Point(81, 359);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(184, 20);
             this.txtCodigo.TabIndex = 1;
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(143, 165);
+            this.txtDescripcion.Location = new System.Drawing.Point(81, 387);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(184, 20);
             this.txtDescripcion.TabIndex = 2;
             // 
             // txtPrecio
             // 
-            this.txtPrecio.Location = new System.Drawing.Point(143, 250);
+            this.txtPrecio.Location = new System.Drawing.Point(81, 472);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(184, 20);
             this.txtPrecio.TabIndex = 5;
@@ -156,7 +159,7 @@
             // 
             this.lvlCargaArticulos.AutoSize = true;
             this.lvlCargaArticulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lvlCargaArticulos.Location = new System.Drawing.Point(71, 23);
+            this.lvlCargaArticulos.Location = new System.Drawing.Point(28, 276);
             this.lvlCargaArticulos.Name = "lvlCargaArticulos";
             this.lvlCargaArticulos.Size = new System.Drawing.Size(234, 31);
             this.lvlCargaArticulos.TabIndex = 14;
@@ -165,7 +168,7 @@
             // cboMarca
             // 
             this.cboMarca.FormattingEnabled = true;
-            this.cboMarca.Location = new System.Drawing.Point(143, 195);
+            this.cboMarca.Location = new System.Drawing.Point(81, 417);
             this.cboMarca.Name = "cboMarca";
             this.cboMarca.Size = new System.Drawing.Size(184, 21);
             this.cboMarca.TabIndex = 3;
@@ -174,7 +177,7 @@
             // cboCategoria
             // 
             this.cboCategoria.FormattingEnabled = true;
-            this.cboCategoria.Location = new System.Drawing.Point(143, 221);
+            this.cboCategoria.Location = new System.Drawing.Point(81, 443);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(184, 21);
             this.cboCategoria.TabIndex = 4;
@@ -183,16 +186,58 @@
             // dgvArticulos
             // 
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvArticulos.Location = new System.Drawing.Point(77, 327);
+            this.dgvArticulos.Location = new System.Drawing.Point(28, 72);
             this.dgvArticulos.Name = "dgvArticulos";
-            this.dgvArticulos.Size = new System.Drawing.Size(685, 150);
+            this.dgvArticulos.Size = new System.Drawing.Size(846, 177);
             this.dgvArticulos.TabIndex = 15;
+            this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
+            // 
+            // pbxArticulo
+            // 
+            this.pbxArticulo.Location = new System.Drawing.Point(880, 72);
+            this.pbxArticulo.Name = "pbxArticulo";
+            this.pbxArticulo.Size = new System.Drawing.Size(195, 177);
+            this.pbxArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxArticulo.TabIndex = 16;
+            this.pbxArticulo.TabStop = false;
+            // 
+            // lblTablaArticulos
+            // 
+            this.lblTablaArticulos.AutoSize = true;
+            this.lblTablaArticulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTablaArticulos.Location = new System.Drawing.Point(22, 26);
+            this.lblTablaArticulos.Name = "lblTablaArticulos";
+            this.lblTablaArticulos.Size = new System.Drawing.Size(231, 31);
+            this.lblTablaArticulos.TabIndex = 17;
+            this.lblTablaArticulos.Text = "Tabla de Articulos";
+            // 
+            // lblMarcas
+            // 
+            this.lblMarcas.AutoSize = true;
+            this.lblMarcas.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMarcas.Location = new System.Drawing.Point(691, 276);
+            this.lblMarcas.Name = "lblMarcas";
+            this.lblMarcas.Size = new System.Drawing.Size(215, 31);
+            this.lblMarcas.TabIndex = 18;
+            this.lblMarcas.Text = "Tabla de Marcas";
+            // 
+            // dvgMarcas
+            // 
+            this.dvgMarcas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dvgMarcas.Location = new System.Drawing.Point(697, 315);
+            this.dvgMarcas.Name = "dvgMarcas";
+            this.dvgMarcas.Size = new System.Drawing.Size(253, 177);
+            this.dvgMarcas.TabIndex = 19;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(834, 489);
+            this.ClientSize = new System.Drawing.Size(1087, 633);
+            this.Controls.Add(this.dvgMarcas);
+            this.Controls.Add(this.lblMarcas);
+            this.Controls.Add(this.lblTablaArticulos);
+            this.Controls.Add(this.pbxArticulo);
             this.Controls.Add(this.dgvArticulos);
             this.Controls.Add(this.cboCategoria);
             this.Controls.Add(this.cboMarca);
@@ -215,6 +260,8 @@
             this.Text = "Ventana principal";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dvgMarcas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,6 +285,10 @@
         private System.Windows.Forms.ComboBox cboMarca;
         private System.Windows.Forms.ComboBox cboCategoria;
         private System.Windows.Forms.DataGridView dgvArticulos;
+        private System.Windows.Forms.PictureBox pbxArticulo;
+        private System.Windows.Forms.Label lblTablaArticulos;
+        private System.Windows.Forms.Label lblMarcas;
+        private System.Windows.Forms.DataGridView dvgMarcas;
     }
 }
 
