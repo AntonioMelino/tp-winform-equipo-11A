@@ -1,0 +1,178 @@
+﻿namespace TrabajoPracticoWinForm
+{
+    partial class frmAltaArticulo
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.lblNombreArticulo = new System.Windows.Forms.Label();
+            this.lblCodigoArticulo = new System.Windows.Forms.Label();
+            this.lblDescripcionArticulo = new System.Windows.Forms.Label();
+            this.txtNombreArticulo = new System.Windows.Forms.TextBox();
+            this.txtCodigoArticulo = new System.Windows.Forms.TextBox();
+            this.txtDescripcionArticulo = new System.Windows.Forms.TextBox();
+            this.lblPrecioArticulo = new System.Windows.Forms.Label();
+            this.txtPrecioArticulo = new System.Windows.Forms.TextBox();
+            this.btnAceptarArticulo = new System.Windows.Forms.Button();
+            this.btnCancelarArticulo = new System.Windows.Forms.Button();
+            this.lblTituloAlta = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // lblNombreArticulo
+            // 
+            this.lblNombreArticulo.AutoSize = true;
+            this.lblNombreArticulo.Location = new System.Drawing.Point(65, 84);
+            this.lblNombreArticulo.Name = "lblNombreArticulo";
+            this.lblNombreArticulo.Size = new System.Drawing.Size(47, 13);
+            this.lblNombreArticulo.TabIndex = 0;
+            this.lblNombreArticulo.Text = "Nombre:";
+            // 
+            // lblCodigoArticulo
+            // 
+            this.lblCodigoArticulo.AutoSize = true;
+            this.lblCodigoArticulo.Location = new System.Drawing.Point(68, 131);
+            this.lblCodigoArticulo.Name = "lblCodigoArticulo";
+            this.lblCodigoArticulo.Size = new System.Drawing.Size(43, 13);
+            this.lblCodigoArticulo.TabIndex = 1;
+            this.lblCodigoArticulo.Text = "Código:";
+            // 
+            // lblDescripcionArticulo
+            // 
+            this.lblDescripcionArticulo.AutoSize = true;
+            this.lblDescripcionArticulo.Location = new System.Drawing.Point(49, 176);
+            this.lblDescripcionArticulo.Name = "lblDescripcionArticulo";
+            this.lblDescripcionArticulo.Size = new System.Drawing.Size(66, 13);
+            this.lblDescripcionArticulo.TabIndex = 2;
+            this.lblDescripcionArticulo.Text = "Descripción:";
+            // 
+            // txtNombreArticulo
+            // 
+            this.txtNombreArticulo.Location = new System.Drawing.Point(121, 84);
+            this.txtNombreArticulo.Name = "txtNombreArticulo";
+            this.txtNombreArticulo.Size = new System.Drawing.Size(100, 20);
+            this.txtNombreArticulo.TabIndex = 3;
+            // 
+            // txtCodigoArticulo
+            // 
+            this.txtCodigoArticulo.Location = new System.Drawing.Point(121, 131);
+            this.txtCodigoArticulo.Name = "txtCodigoArticulo";
+            this.txtCodigoArticulo.Size = new System.Drawing.Size(100, 20);
+            this.txtCodigoArticulo.TabIndex = 4;
+            // 
+            // txtDescripcionArticulo
+            // 
+            this.txtDescripcionArticulo.Location = new System.Drawing.Point(121, 176);
+            this.txtDescripcionArticulo.Name = "txtDescripcionArticulo";
+            this.txtDescripcionArticulo.Size = new System.Drawing.Size(100, 20);
+            this.txtDescripcionArticulo.TabIndex = 5;
+            // 
+            // lblPrecioArticulo
+            // 
+            this.lblPrecioArticulo.AutoSize = true;
+            this.lblPrecioArticulo.Location = new System.Drawing.Point(72, 227);
+            this.lblPrecioArticulo.Name = "lblPrecioArticulo";
+            this.lblPrecioArticulo.Size = new System.Drawing.Size(40, 13);
+            this.lblPrecioArticulo.TabIndex = 6;
+            this.lblPrecioArticulo.Text = "Precio:";
+            // 
+            // txtPrecioArticulo
+            // 
+            this.txtPrecioArticulo.Location = new System.Drawing.Point(121, 227);
+            this.txtPrecioArticulo.Name = "txtPrecioArticulo";
+            this.txtPrecioArticulo.Size = new System.Drawing.Size(100, 20);
+            this.txtPrecioArticulo.TabIndex = 7;
+            // 
+            // btnAceptarArticulo
+            // 
+            this.btnAceptarArticulo.Location = new System.Drawing.Point(12, 279);
+            this.btnAceptarArticulo.Name = "btnAceptarArticulo";
+            this.btnAceptarArticulo.Size = new System.Drawing.Size(75, 23);
+            this.btnAceptarArticulo.TabIndex = 8;
+            this.btnAceptarArticulo.Text = "Aceptar";
+            this.btnAceptarArticulo.UseVisualStyleBackColor = true;
+            this.btnAceptarArticulo.Click += new System.EventHandler(this.btnAceptarArticulo_Click);
+            // 
+            // btnCancelarArticulo
+            // 
+            this.btnCancelarArticulo.Location = new System.Drawing.Point(237, 279);
+            this.btnCancelarArticulo.Name = "btnCancelarArticulo";
+            this.btnCancelarArticulo.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelarArticulo.TabIndex = 9;
+            this.btnCancelarArticulo.Text = "Cancelar";
+            this.btnCancelarArticulo.UseVisualStyleBackColor = true;
+            this.btnCancelarArticulo.Click += new System.EventHandler(this.btnCancelarArticulo_Click);
+            // 
+            // lblTituloAlta
+            // 
+            this.lblTituloAlta.AutoSize = true;
+            this.lblTituloAlta.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloAlta.Location = new System.Drawing.Point(72, 9);
+            this.lblTituloAlta.Name = "lblTituloAlta";
+            this.lblTituloAlta.Size = new System.Drawing.Size(171, 33);
+            this.lblTituloAlta.TabIndex = 10;
+            this.lblTituloAlta.Text = "Alta Articulo";
+            // 
+            // frmAltaArticulo
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(324, 314);
+            this.Controls.Add(this.lblTituloAlta);
+            this.Controls.Add(this.btnCancelarArticulo);
+            this.Controls.Add(this.btnAceptarArticulo);
+            this.Controls.Add(this.txtPrecioArticulo);
+            this.Controls.Add(this.lblPrecioArticulo);
+            this.Controls.Add(this.txtDescripcionArticulo);
+            this.Controls.Add(this.txtCodigoArticulo);
+            this.Controls.Add(this.txtNombreArticulo);
+            this.Controls.Add(this.lblDescripcionArticulo);
+            this.Controls.Add(this.lblCodigoArticulo);
+            this.Controls.Add(this.lblNombreArticulo);
+            this.MaximumSize = new System.Drawing.Size(340, 353);
+            this.MinimumSize = new System.Drawing.Size(340, 353);
+            this.Name = "frmAltaArticulo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Nuevo Articulo";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Label lblNombreArticulo;
+        private System.Windows.Forms.Label lblCodigoArticulo;
+        private System.Windows.Forms.Label lblDescripcionArticulo;
+        private System.Windows.Forms.TextBox txtNombreArticulo;
+        private System.Windows.Forms.TextBox txtCodigoArticulo;
+        private System.Windows.Forms.TextBox txtDescripcionArticulo;
+        private System.Windows.Forms.Label lblPrecioArticulo;
+        private System.Windows.Forms.TextBox txtPrecioArticulo;
+        private System.Windows.Forms.Button btnAceptarArticulo;
+        private System.Windows.Forms.Button btnCancelarArticulo;
+        private System.Windows.Forms.Label lblTituloAlta;
+    }
+}

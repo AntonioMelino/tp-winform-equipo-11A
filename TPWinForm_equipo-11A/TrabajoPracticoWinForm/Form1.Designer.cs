@@ -48,6 +48,7 @@
             this.lblTablaArticulos = new System.Windows.Forms.Label();
             this.lblMarcas = new System.Windows.Forms.Label();
             this.dvgMarcas = new System.Windows.Forms.DataGridView();
+            this.btnAgregarArticulo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dvgMarcas)).BeginInit();
@@ -229,11 +230,22 @@
             this.dvgMarcas.Size = new System.Drawing.Size(253, 177);
             this.dvgMarcas.TabIndex = 19;
             // 
+            // btnAgregarArticulo
+            // 
+            this.btnAgregarArticulo.Location = new System.Drawing.Point(28, 256);
+            this.btnAgregarArticulo.Name = "btnAgregarArticulo";
+            this.btnAgregarArticulo.Size = new System.Drawing.Size(122, 23);
+            this.btnAgregarArticulo.TabIndex = 20;
+            this.btnAgregarArticulo.Text = "Agregar Articulo";
+            this.btnAgregarArticulo.UseVisualStyleBackColor = true;
+            this.btnAgregarArticulo.Click += new System.EventHandler(this.btnAgregarArticulo_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1087, 633);
+            this.Controls.Add(this.btnAgregarArticulo);
             this.Controls.Add(this.dvgMarcas);
             this.Controls.Add(this.lblMarcas);
             this.Controls.Add(this.lblTablaArticulos);
@@ -289,6 +301,7 @@
         private System.Windows.Forms.Label lblTablaArticulos;
         private System.Windows.Forms.Label lblMarcas;
         private System.Windows.Forms.DataGridView dvgMarcas;
+        private System.Windows.Forms.Button btnAgregarArticulo;
     }
 }
 

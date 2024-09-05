@@ -96,6 +96,12 @@ namespace TrabajoPracticoWinForm
 
         }
 
+        private void btnAgregarArticulo_Click(object sender, EventArgs e)
+        {
+            frmAltaArticulo alta = new frmAltaArticulo();
+            alta.ShowDialog();
+        }
+
         /*private void cargarImagen(ArticuloNegocio imagen)
         {
             try
