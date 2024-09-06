@@ -26,20 +26,21 @@ namespace TrabajoPracticoWinForm
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            ArticuloNegocio negocio = new ArticuloNegocio();
-            listaArticulo = negocio.listar();
-            
-            dgvArticulos.DataSource = listaArticulo;
+            //ArticuloNegocio negocio = new ArticuloNegocio();
+            //listaArticulo = negocio.listar();
 
-            pbxArticulo.Load(listaArticulo[0].Imagen.ImagenUrl);
-            //cargarImagen(listaArticulo[0].Imagen.ImagenUrl);
+            //dgvArticulos.DataSource = listaArticulo;
 
-            //lista = negocio.listar();
-            //dgvArticulos.DataSource = lista;
+            //pbxArticulo.Load(listaArticulo[0].Imagen.ImagenUrl);
+            ////cargarImagen(listaArticulo[0].Imagen.ImagenUrl);
 
-            MarcaNegocio negocioMarca = new MarcaNegocio();
-            listaMarca = negocioMarca.listar();
-            dvgMarcas.DataSource = listaMarca;
+            ////lista = negocio.listar();
+            ////dgvArticulos.DataSource = lista;
+
+            //MarcaNegocio negocioMarca = new MarcaNegocio();
+            //listaMarca = negocioMarca.listar();
+            //dvgMarcas.DataSource = listaMarca;
+            cargar();
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -85,10 +86,29 @@ namespace TrabajoPracticoWinForm
 
         }
 
+        private void cargar()
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            listaArticulo = negocio.listar();
+
+            dgvArticulos.DataSource = listaArticulo;
+
+            pbxArticulo.Load(listaArticulo[0].Imagen.ImagenUrl);
+            //cargarImagen(listaArticulo[0].Imagen.ImagenUrl);
+
+            //lista = negocio.listar();
+            //dgvArticulos.DataSource = lista;
+
+            MarcaNegocio negocioMarca = new MarcaNegocio();
+            listaMarca = negocioMarca.listar();
+            dvgMarcas.DataSource = listaMarca;
+        }
+
         private void btnAgregarArticulo_Click(object sender, EventArgs e)
         {
             frmAltaArticulo alta = new frmAltaArticulo();
             alta.ShowDialog();
+            cargar();
         }
 
         /*private void cargarImagen(ArticuloNegocio imagen)

@@ -31,12 +31,13 @@ namespace TrabajoPracticoWinForm
 
             try
             {
-                articulo.Nombre = txtNombreArticulo.Text;
+                
                 articulo.Codigo = txtCodigoArticulo.Text;
+                articulo.Nombre = txtNombreArticulo.Text;
                 articulo.Descripcion = txtDescripcionArticulo.Text;
-                articulo.Precio = decimal.Parse(txtPrecioArticulo.Text);
                 articulo.Marca = (Marca)cboMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
+                articulo.Precio = decimal.Parse(txtPrecioArticulo.Text);
 
                 negocio.agregar(articulo);
                 MessageBox.Show("Agregado exitosamente");
@@ -68,5 +69,11 @@ namespace TrabajoPracticoWinForm
                 throw;
             }
         }
+
+        private void txtImagenUrl_Leave(object sender, EventArgs e)
+        {
+            
+        }
+
     }
 }
