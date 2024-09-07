@@ -43,21 +43,6 @@ namespace TrabajoPracticoWinForm
             cargar();
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            string articulo = txtNombre.Text;
-            string codigo = txtCodigo.Text;
-            string descripcion = txtDescripcion.Text;
-            string marca = cboMarca.SelectedItem.ToString();
-            string categoria = cboCategoria.SelectedItem.ToString();
-            string precio = txtPrecio.Text;
-            lwArticulos.Items.Add(articulo + " " + codigo + " " + descripcion + " " + marca + " " + categoria + " $" + precio);
-
-            txtNombre.Clear();
-            txtCodigo.Clear();
-            txtDescripcion.Clear();
-            txtPrecio.Clear();
-        }
 
         private void cboMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -109,6 +94,11 @@ namespace TrabajoPracticoWinForm
             frmAltaArticulo alta = new frmAltaArticulo();
             alta.ShowDialog();
             cargar();
+        }
+
+        private void lwArticulos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
         /*private void cargarImagen(ArticuloNegocio imagen)

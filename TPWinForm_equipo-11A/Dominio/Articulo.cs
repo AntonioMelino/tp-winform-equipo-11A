@@ -10,7 +10,6 @@ namespace Dominio
     public class Articulo
     {
         public int ID { get; set; }
-
         [DisplayName("Código")]
         public string Codigo { get; set; }
         public string Nombre { get; set; }

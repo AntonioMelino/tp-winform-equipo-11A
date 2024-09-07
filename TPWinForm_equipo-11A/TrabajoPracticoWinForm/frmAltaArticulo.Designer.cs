@@ -125,7 +125,7 @@
             // 
             // btnCancelarArticulo
             // 
-            this.btnCancelarArticulo.Location = new System.Drawing.Point(168, 312);
+            this.btnCancelarArticulo.Location = new System.Drawing.Point(161, 312);
             this.btnCancelarArticulo.Name = "btnCancelarArticulo";
             this.btnCancelarArticulo.Size = new System.Drawing.Size(75, 23);
             this.btnCancelarArticulo.TabIndex = 7;
@@ -137,7 +137,7 @@
             // 
             this.lblTituloAlta.AutoSize = true;
             this.lblTituloAlta.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloAlta.Location = new System.Drawing.Point(72, 9);
+            this.lblTituloAlta.Location = new System.Drawing.Point(43, 26);
             this.lblTituloAlta.Name = "lblTituloAlta";
             this.lblTituloAlta.Size = new System.Drawing.Size(171, 33);
             this.lblTituloAlta.TabIndex = 10;
@@ -196,7 +196,7 @@
             // 
             // pbxArticuloAlta
             // 
-            this.pbxArticuloAlta.Location = new System.Drawing.Point(257, 84);
+            this.pbxArticuloAlta.Location = new System.Drawing.Point(284, 84);
             this.pbxArticuloAlta.Name = "pbxArticuloAlta";
             this.pbxArticuloAlta.Size = new System.Drawing.Size(323, 251);
             this.pbxArticuloAlta.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
