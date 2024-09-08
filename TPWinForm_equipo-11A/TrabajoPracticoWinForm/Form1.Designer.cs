@@ -35,6 +35,7 @@
             this.dvgMarcas = new System.Windows.Forms.DataGridView();
             this.btnAgregarArticulo = new System.Windows.Forms.Button();
             this.btnModificarArticulo = new System.Windows.Forms.Button();
+            this.btnEliminarArticulo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dvgMarcas)).BeginInit();
@@ -110,11 +111,22 @@
             this.btnModificarArticulo.UseVisualStyleBackColor = true;
             this.btnModificarArticulo.Click += new System.EventHandler(this.btnModificarArticulo_Click);
             // 
+            // btnEliminarArticulo
+            // 
+            this.btnEliminarArticulo.Location = new System.Drawing.Point(310, 498);
+            this.btnEliminarArticulo.Name = "btnEliminarArticulo";
+            this.btnEliminarArticulo.Size = new System.Drawing.Size(135, 35);
+            this.btnEliminarArticulo.TabIndex = 22;
+            this.btnEliminarArticulo.Text = "Eliminar Articulo";
+            this.btnEliminarArticulo.UseVisualStyleBackColor = true;
+            this.btnEliminarArticulo.Click += new System.EventHandler(this.btnEliminarArticulo_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1087, 633);
+            this.Controls.Add(this.btnEliminarArticulo);
             this.Controls.Add(this.btnModificarArticulo);
             this.Controls.Add(this.btnAgregarArticulo);
             this.Controls.Add(this.dvgMarcas);
@@ -143,6 +155,7 @@
         private System.Windows.Forms.DataGridView dvgMarcas;
         private System.Windows.Forms.Button btnAgregarArticulo;
         private System.Windows.Forms.Button btnModificarArticulo;
+        private System.Windows.Forms.Button btnEliminarArticulo;
     }
 }
 
