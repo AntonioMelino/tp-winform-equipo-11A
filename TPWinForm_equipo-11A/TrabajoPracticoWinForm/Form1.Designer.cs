@@ -34,6 +34,7 @@
             this.lblMarcas = new System.Windows.Forms.Label();
             this.dvgMarcas = new System.Windows.Forms.DataGridView();
             this.btnAgregarArticulo = new System.Windows.Forms.Button();
+            this.btnModificarArticulo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dvgMarcas)).BeginInit();
@@ -99,11 +100,22 @@
             this.btnAgregarArticulo.UseVisualStyleBackColor = true;
             this.btnAgregarArticulo.Click += new System.EventHandler(this.btnAgregarArticulo_Click);
             // 
+            // btnModificarArticulo
+            // 
+            this.btnModificarArticulo.Location = new System.Drawing.Point(169, 498);
+            this.btnModificarArticulo.Name = "btnModificarArticulo";
+            this.btnModificarArticulo.Size = new System.Drawing.Size(135, 35);
+            this.btnModificarArticulo.TabIndex = 21;
+            this.btnModificarArticulo.Text = "Modificar Articulo";
+            this.btnModificarArticulo.UseVisualStyleBackColor = true;
+            this.btnModificarArticulo.Click += new System.EventHandler(this.btnModificarArticulo_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1087, 633);
+            this.Controls.Add(this.btnModificarArticulo);
             this.Controls.Add(this.btnAgregarArticulo);
             this.Controls.Add(this.dvgMarcas);
             this.Controls.Add(this.lblMarcas);
@@ -130,6 +142,7 @@
         private System.Windows.Forms.Label lblMarcas;
         private System.Windows.Forms.DataGridView dvgMarcas;
         private System.Windows.Forms.Button btnAgregarArticulo;
+        private System.Windows.Forms.Button btnModificarArticulo;
     }
 }
 

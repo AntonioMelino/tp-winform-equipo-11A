@@ -14,9 +14,18 @@ namespace TrabajoPracticoWinForm
 {
     public partial class frmAltaArticulo : Form
     {
+        private Articulo articulo = null;
         public frmAltaArticulo()
         {
             InitializeComponent();
+        }
+
+        public frmAltaArticulo(Articulo articulo)
+        {
+            InitializeComponent();
+            this.articulo = articulo;
+            Text = "Modificar Articulo";
+            lblTituloAlta.Text = "Modificar Articulo";
         }
 
         private void btnCancelarArticulo_Click(object sender, EventArgs e)
@@ -26,11 +35,13 @@ namespace TrabajoPracticoWinForm
 
         private void btnAceptarArticulo_Click(object sender, EventArgs e)
         {
-            Articulo articulo = new Articulo();
+            //Articulo articulo = new Articulo();
             ArticuloNegocio negocio = new ArticuloNegocio();
 
             try
-            {
+            {   
+                if(articulo == null)
+                    articulo = new Articulo();
                 
                 articulo.Codigo = txtCodigoArticulo.Text;
                 articulo.Nombre = txtNombreArticulo.Text;
@@ -39,8 +50,18 @@ namespace TrabajoPracticoWinForm
                 articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
                 articulo.Precio = decimal.Parse(txtPrecioArticulo.Text);
 
-                negocio.agregar(articulo);
-                MessageBox.Show("Agregado exitosamente");
+                if(articulo.ID != 0)
+                {
+                    negocio.modificar(articulo);
+                    MessageBox.Show("Modificado exitosamente");
+                }
+                else 
+                {
+                    negocio.agregar(articulo);
+                    MessageBox.Show("Agregado exitosamente");
+                }
+                
+
                 Close();
 
             }
@@ -56,12 +77,23 @@ namespace TrabajoPracticoWinForm
             MarcaNegocio marcaNegocio = new MarcaNegocio();
             try
             {
-            cboCategoria.DataSource = categoriaNegocio.listar();
-            cboMarca.DataSource = marcaNegocio.listar();
-            cboMarca.ValueMember = "Id";
-            cboCategoria.ValueMember = "Id";
-            cboMarca.DisplayMember = "Descripcion";
-            cboCategoria.DisplayMember = "Descripcion";
+                cboCategoria.DataSource = categoriaNegocio.listar();
+                cboMarca.DataSource = marcaNegocio.listar();
+                cboMarca.ValueMember = "Id";
+                cboCategoria.ValueMember = "Id";
+                cboMarca.DisplayMember = "Descripcion";
+                cboCategoria.DisplayMember = "Descripcion";
+
+                if (articulo != null)
+                {
+                    txtCodigoArticulo.Text = articulo.Codigo;
+                    txtNombreArticulo.Text = articulo.Nombre;
+                    txtDescripcionArticulo.Text = articulo.Descripcion;
+                    txtPrecioArticulo.Text = articulo.Precio.ToString();
+                    txtImagenUrl.Text = articulo.Imagen.ToString();
+                    cboMarca.SelectedValue = articulo.Marca.ID;
+                    cboCategoria.SelectedValue = articulo.Categoria.ID;
+                }
             }
             catch (Exception)
             {

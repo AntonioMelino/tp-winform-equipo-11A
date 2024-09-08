@@ -78,6 +78,9 @@ namespace TrabajoPracticoWinForm
 
             dgvArticulos.DataSource = listaArticulo;
 
+            dgvArticulos.Columns["Id"].Visible = false;
+            //dgvArticulos.Columns["ImagenUrl"].Visible = false;
+
             pbxArticulo.Load(listaArticulo[0].Imagen.ImagenUrl);
             //cargarImagen(listaArticulo[0].Imagen.ImagenUrl);
 
@@ -99,6 +102,15 @@ namespace TrabajoPracticoWinForm
         private void lwArticulos_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnModificarArticulo_Click(object sender, EventArgs e)
+        {
+            Articulo seleccionado;
+            seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            frmAltaArticulo modificar = new frmAltaArticulo(seleccionado);
+            modificar.ShowDialog();
+            cargar();
         }
 
         /*private void cargarImagen(ArticuloNegocio imagen)
