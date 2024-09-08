@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
 using Negocio;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace TrabajoPracticoWinForm
 {
@@ -58,6 +59,21 @@ namespace TrabajoPracticoWinForm
                 else 
                 {
                     negocio.agregar(articulo);
+                    int idart = negocio.traerArt();
+                    Imagen img = new Imagen();
+                    ImgNegocio imgNegocio = new ImgNegocio();
+                    img.IDArticulo = idart;
+                    img.ImagenUrl = txtImagenUrl.Text;
+                    imgNegocio.agregar(img);
+                    while ((MessageBox.Show("¿Quiere cargar otra imagen?", "Other Image", MessageBoxButtons.YesNo) == DialogResult.Yes))
+                    {
+                        frmAgregarImg form = new frmAgregarImg(img);
+                        form.ShowDialog(); 
+                        Close();
+                        //txtImagenUrl.Text = "";
+                        
+                        
+                    }
                     MessageBox.Show("Agregado exitosamente");
                 }
                 
@@ -90,7 +106,7 @@ namespace TrabajoPracticoWinForm
                     txtNombreArticulo.Text = articulo.Nombre;
                     txtDescripcionArticulo.Text = articulo.Descripcion;
                     txtPrecioArticulo.Text = articulo.Precio.ToString();
-                    txtImagenUrl.Text = articulo.Imagen.ToString();
+                    //txtImagenUrl.Text = articulo.Imagen.ImagenUrl;
                     cboMarca.SelectedValue = articulo.Marca.ID;
                     cboCategoria.SelectedValue = articulo.Categoria.ID;
                 }

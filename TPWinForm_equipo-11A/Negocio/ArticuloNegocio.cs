@@ -105,5 +105,32 @@ namespace TrabajoPracticoWinForm
                 datos.cerrarConexion();
             }
         }
+        public int traerArt()
+        {
+            int art = 0;
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("SELECT top 1 * FROM ARTICULOS ORDER BY id DESC ");
+                datos.ejecutarLectura();
+                if (datos.Lector.Read())
+                {
+                    // Leer el valor de "Id" de la primera fila
+                    art = Convert.ToInt32(datos.Lector["Id"]);
+                }
+                return art;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
     }
 }
