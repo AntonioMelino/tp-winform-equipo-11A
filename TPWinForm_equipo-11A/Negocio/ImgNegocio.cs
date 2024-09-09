@@ -1,5 +1,6 @@
 ﻿using Dominio;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,89 @@ namespace Negocio
                 datos.setearParametro("@IdArticulo", nuevo.IDArticulo);
                 datos.setearParametro("@ImagenUrl", nuevo.ImagenUrl);
                 datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public Imagen traerImg(int idart)
+        {
+            List<Imagen> lista = new List<Imagen>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("SELECT * FROM IMAGENES WHERE IdArticulo = @idart");
+                datos.setearParametro("@idart", idart);
+                datos.ejecutarLectura();
+                Imagen aux = new Imagen();
+                while (datos.Lector.Read())
+                {
+                    aux.ID = (int)datos.Lector["Id"];
+                    aux.IDArticulo = (int)datos.Lector["IdArticulo"];
+                    aux.ImagenUrl = datos.Lector["ImagenUrl"].ToString();
+                }
+                return aux;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public List<Imagen> listar_x_id(int idart)
+        {
+            List<Imagen> lista = new List<Imagen>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("SELECT * FROM IMAGENES WHERE IdArticulo = @idart");
+                datos.setearParametro("@idart", idart);
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    Imagen aux = new Imagen();
+                    aux.ID = (int)datos.Lector["Id"];
+                    aux.IDArticulo = (int)datos.Lector["IdArticulo"];
+                    aux.ImagenUrl = datos.Lector["ImagenUrl"].ToString();
+                    lista.Add(aux);
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public int traerPrimerId(int art)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            int id = 0;
+            try
+            {
+                datos.setearConsulta("SELECT Id FROM IMAGENES WHERE IdArticulo = @art");
+                datos.setearParametro("@art", art);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    // Leer el valor de "Id" de la primera fila
+                     id = Convert.ToInt32(datos.Lector["Id"]);
+                }
+                return id;
             }
             catch (Exception ex)
             {

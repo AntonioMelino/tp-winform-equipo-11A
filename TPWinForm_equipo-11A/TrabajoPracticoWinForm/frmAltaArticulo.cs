@@ -53,6 +53,9 @@ namespace TrabajoPracticoWinForm
 
                 if(articulo.ID != 0)
                 {
+                    Imagen img = new Imagen();
+                    ImgNegocio imgNegocio = new ImgNegocio();
+                    img.IDArticulo = articulo.ID;
                     negocio.modificar(articulo);
                     MessageBox.Show("Modificado exitosamente");
                 }
@@ -76,10 +79,7 @@ namespace TrabajoPracticoWinForm
                     }
                     MessageBox.Show("Agregado exitosamente");
                 }
-                
-
                 Close();
-
             }
             catch (Exception ex)
             {
@@ -91,6 +91,8 @@ namespace TrabajoPracticoWinForm
         {
             CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
             MarcaNegocio marcaNegocio = new MarcaNegocio();
+            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+            ImgNegocio imgnegocio = new ImgNegocio();
             try
             {
                 cboCategoria.DataSource = categoriaNegocio.listar();
@@ -99,9 +101,15 @@ namespace TrabajoPracticoWinForm
                 cboCategoria.ValueMember = "Id";
                 cboMarca.DisplayMember = "Descripcion";
                 cboCategoria.DisplayMember = "Descripcion";
-
+                lblImagenes.Visible = false;
+                cboImagenes.Visible = false;
                 if (articulo != null)
                 {
+                    lblImagenes.Visible= true;
+                    cboImagenes.Visible = true;
+                    cboImagenes.DataSource = imgnegocio.listar_x_id(articulo.ID);
+                    cboImagenes.ValueMember = "Id";
+                    cboImagenes.DisplayMember = "ImagenUrl";
                     txtCodigoArticulo.Text = articulo.Codigo;
                     txtNombreArticulo.Text = articulo.Nombre;
                     txtDescripcionArticulo.Text = articulo.Descripcion;
@@ -114,7 +122,7 @@ namespace TrabajoPracticoWinForm
             catch (Exception)
             {
 
-                throw;
+                 throw;
             }
         }
 
