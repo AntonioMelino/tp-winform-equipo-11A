@@ -158,16 +158,50 @@ namespace TrabajoPracticoWinForm
             {
                 string consulta = "SELECT A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion as NombreMarca, C.Descripcion as NombreCategoria, Precio, ImagenUrl, A.IdMarca, A.IdCategoria, A.Id FROM ARTICULOS as A, CATEGORIAS AS C, MARCAS AS M, IMAGENES AS I WHERE A.IdMarca = M.Id AND A.IdCategoria = C.Id AND A.Id = I.IdArticulo AND ";
 
-                switch (criterio)
+                switch (campo)
                 {
-                    case "Comienza con":
-                        consulta += campo + " LIKE '" + filtro + "%'";
+                    case "Codigo":
+                    case "Nombre":
+                    case "Descripcion":
+                        switch (criterio)
+                        {
+                            case "Comienza con":
+                                consulta += campo + " LIKE '" + filtro + "%'";
+                                break;
+                            case "Termina con":
+                                consulta += campo + " LIKE '%" + filtro + "'";
+                                break;
+                            case "Contiene":
+                                consulta += campo + " LIKE '%" + filtro + "%'";
+                                break;
+                        }
                         break;
-                    case "Termina con":
-                        consulta += campo + " LIKE '%" + filtro + "'";
+
+                    // Filtro por rango de precios
+                    case "Precio":
+                        if (criterio == "Mayor a")
+                        {
+                            consulta += "Precio > " + filtro;
+                        }
+                        else if (criterio == "Menor a")
+                        {
+                            consulta += "Precio < " + filtro;
+                        }
                         break;
-                    case "Contiene":
-                        consulta += campo + " LIKE '%" + filtro + "%'";
+
+                    case "Marca":
+                        if (criterio == "Igual a")
+                        {
+
+                            consulta += "A.IdMarca = (SELECT Id FROM MARCAS WHERE Descripcion = '" + filtro + "')";
+                        }
+                        break;
+
+                    case "Categoria":
+                        if (criterio == "Igual a")
+                        {
+                            consulta += "A.IdCategoria = (SELECT Id FROM CATEGORIAS WHERE Descripcion = '" + filtro + "')";
+                        }
                         break;
                 }
 

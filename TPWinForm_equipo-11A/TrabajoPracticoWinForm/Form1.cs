@@ -46,6 +46,9 @@ namespace TrabajoPracticoWinForm
             cboCampo.Items.Add("Codigo");
             cboCampo.Items.Add("Nombre");
             cboCampo.Items.Add("Descripcion");
+            cboCampo.Items.Add("Precio");
+            cboCampo.Items.Add("Marca");
+            cboCampo.Items.Add("Categoria");
         }
 
 
@@ -144,11 +147,31 @@ namespace TrabajoPracticoWinForm
 
         private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //string opcion = cboCampo.SelectedItem.ToString();
-            cboCriterio.Items.Clear();
-            cboCriterio.Items.Add("Comienza con");
-            cboCriterio.Items.Add("Termina con");
-            cboCriterio.Items.Add("Contiene");
+            cboCriterio.Items.Clear(); // Limpia las opciones del ComboBox de criterios
+
+            string opcion = cboCampo.SelectedItem.ToString();
+
+            if (opcion == "Precio")
+            {
+                // Añadimos criterios para rango de precio
+                cboCriterio.Items.Add("Mayor a");
+                cboCriterio.Items.Add("Menor a");
+            }
+            else if (opcion == "Marca")
+            {
+                cboCriterio.Items.Add("Igual a");
+            }
+            else if (opcion == "Categoria")
+            {
+                cboCriterio.Items.Add("Igual a");
+            }
+            else
+            {
+                // Para otros campos como "Codigo", "Nombre", etc.
+                cboCriterio.Items.Add("Comienza con");
+                cboCriterio.Items.Add("Termina con");
+                cboCriterio.Items.Add("Contiene");
+            }
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -158,17 +181,17 @@ namespace TrabajoPracticoWinForm
             try
             {
                 string campo = cboCampo.SelectedItem.ToString();
-                string criterio = cboCriterio.SelectedItem.ToString();
+                string criterio = cboCriterio.SelectedItem?.ToString();  // Criterio puede ser nulo para algunos casos como Precio
                 string filtro = txtFiltro.Text;
+
+
+                // Llamada a filtrar con o sin filtroExtra dependiendo del campo
                 dgvArticulos.DataSource = negocio.filtrar(campo, criterio, filtro);
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.ToString());
             }
-            
-
         }
 
         /*private void cargarImagen(ArticuloNegocio imagen)
