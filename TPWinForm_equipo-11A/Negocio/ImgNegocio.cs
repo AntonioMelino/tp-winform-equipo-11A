@@ -30,15 +30,15 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
-        public Imagen traerImg(int idart)
+        public Imagen traerImg(int id)
         {
             List<Imagen> lista = new List<Imagen>();
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                datos.setearConsulta("SELECT * FROM IMAGENES WHERE IdArticulo = @idart");
-                datos.setearParametro("@idart", idart);
+                datos.setearConsulta("SELECT * FROM IMAGENES WHERE Id = @id");
+                datos.setearParametro("@id", id);
                 datos.ejecutarLectura();
                 Imagen aux = new Imagen();
                 while (datos.Lector.Read())
@@ -106,6 +106,28 @@ namespace Negocio
             }
             catch (Exception ex)
             {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public void modificar(Imagen img)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("UPDATE IMAGENES SET IdArticulo = @IdArticulo, ImagenUrl = @ImagenUrl WHERE Id = @id");
+                datos.setearParametro("@id", img.ID);
+                datos.setearParametro("@IdArticulo", img.IDArticulo);
+                datos.setearParametro("@ImagenUrl", img.ImagenUrl);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
                 throw ex;
             }
             finally

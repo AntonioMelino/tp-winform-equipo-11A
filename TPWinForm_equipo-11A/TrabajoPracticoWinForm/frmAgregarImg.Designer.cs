@@ -68,6 +68,7 @@
             this.Controls.Add(this.txtImage);
             this.Controls.Add(this.lblImg);
             this.Name = "frmAgregarImg";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar otra imagen";
             this.Load += new System.EventHandler(this.frmAgregarImg_Load);
             this.ResumeLayout(false);

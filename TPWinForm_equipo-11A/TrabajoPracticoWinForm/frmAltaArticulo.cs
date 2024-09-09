@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Dominio;
 using Negocio;
 using static System.Net.Mime.MediaTypeNames;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace TrabajoPracticoWinForm
 {
@@ -50,12 +51,18 @@ namespace TrabajoPracticoWinForm
                 articulo.Marca = (Marca)cboMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
                 articulo.Precio = decimal.Parse(txtPrecioArticulo.Text);
-
                 if(articulo.ID != 0)
                 {
                     Imagen img = new Imagen();
                     ImgNegocio imgNegocio = new ImgNegocio();
-                    img.IDArticulo = articulo.ID;
+                    if(cboImagenes.SelectedIndex != -1)
+                    {
+                    articulo.Imagen = (Imagen)cboImagenes.SelectedItem;
+                    //img = imgNegocio.traerImg(articulo.Imagen.ID);
+                    articulo.Imagen.ImagenUrl = txtImagenUrl.Text; // FUNCIONA USANDO EL TXT DE LA IMAGEN DEL ALTA
+                    //img.IDArticulo = articulo.ID;
+                    imgNegocio.modificar(articulo.Imagen);
+                    }
                     negocio.modificar(articulo);
                     MessageBox.Show("Modificado exitosamente");
                 }
@@ -65,17 +72,20 @@ namespace TrabajoPracticoWinForm
                     int idart = negocio.traerArt();
                     Imagen img = new Imagen();
                     ImgNegocio imgNegocio = new ImgNegocio();
+                    // --
+                    //articulo.Imagen.IDArticulo = idart;
+                    //articulo.Imagen.ImagenUrl = txtImagenUrl.Text;
+                    //negocio.agregarImg(articulo);
+                    // -- AGREGAR IMG CON NEG DE ARTICULO O TRABAJANDO IMG INDIVIDUAL.
+                    // FUNCIONAN AMBOS.
                     img.IDArticulo = idart;
                     img.ImagenUrl = txtImagenUrl.Text;
                     imgNegocio.agregar(img);
                     while ((MessageBox.Show("¿Quiere cargar otra imagen?", "Other Image", MessageBoxButtons.YesNo) == DialogResult.Yes))
                     {
                         frmAgregarImg form = new frmAgregarImg(img);
-                        form.ShowDialog(); 
-                        Close();
-                        //txtImagenUrl.Text = "";
-                        
-                        
+                        form.ShowDialog();
+                        Close();                 
                     }
                     MessageBox.Show("Agregado exitosamente");
                 }
@@ -104,19 +114,26 @@ namespace TrabajoPracticoWinForm
                 lblImagenes.Visible = false;
                 cboImagenes.Visible = false;
                 if (articulo != null)
-                {
-                    lblImagenes.Visible= true;
-                    cboImagenes.Visible = true;
+                {   
                     cboImagenes.DataSource = imgnegocio.listar_x_id(articulo.ID);
                     cboImagenes.ValueMember = "Id";
                     cboImagenes.DisplayMember = "ImagenUrl";
+                    cboImagenes.DropDownStyle = ComboBoxStyle.DropDownList;
+                    cboCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
+                    cboMarca.DropDownStyle = ComboBoxStyle.DropDownList;                
+                    //lblImagen.Visible = false;
+                    //txtImagenUrl.Visible = false;
+                    lblImagenes.Visible= true;
+                    cboImagenes.Visible = true;   
                     txtCodigoArticulo.Text = articulo.Codigo;
                     txtNombreArticulo.Text = articulo.Nombre;
                     txtDescripcionArticulo.Text = articulo.Descripcion;
                     txtPrecioArticulo.Text = articulo.Precio.ToString();
                     //txtImagenUrl.Text = articulo.Imagen.ImagenUrl;
+                    //articulo.Imagen = new Imagen();
+                    cboImagenes.SelectedValue = articulo.Imagen.ID;
                     cboMarca.SelectedValue = articulo.Marca.ID;
-                    cboCategoria.SelectedValue = articulo.Categoria.ID;
+                    cboCategoria.SelectedValue = articulo.Categoria.ID;          
                 }
             }
             catch (Exception)
@@ -125,11 +142,5 @@ namespace TrabajoPracticoWinForm
                  throw;
             }
         }
-
-        private void txtImagenUrl_Leave(object sender, EventArgs e)
-        {
-            
-        }
-
     }
 }

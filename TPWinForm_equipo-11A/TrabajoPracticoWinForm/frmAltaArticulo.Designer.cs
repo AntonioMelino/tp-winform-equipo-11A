@@ -194,7 +194,6 @@
             this.txtImagenUrl.Name = "txtImagenUrl";
             this.txtImagenUrl.Size = new System.Drawing.Size(122, 20);
             this.txtImagenUrl.TabIndex = 16;
-            this.txtImagenUrl.Leave += new System.EventHandler(this.txtImagenUrl_Leave);
             // 
             // pbxArticuloAlta
             // 

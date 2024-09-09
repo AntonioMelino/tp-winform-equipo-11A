@@ -68,11 +68,12 @@ namespace TrabajoPracticoWinForm
             //pbxArticulo.Load(seleccionado.Imagen.ImagenUrl);
             //cargarImagen(seleccionado.Imagen.ImagenUrl);
             ImgNegocio imgNegocio = new ImgNegocio();
+            seleccionado.Imagen = new Imagen();
             try
             {
                 int id = imgNegocio.traerPrimerId(seleccionado.ID);
-                Imagen image = imgNegocio.traerImg(seleccionado.ID);
-                pbxArticulo.Load(image.ToString());
+                seleccionado.Imagen = imgNegocio.traerImg(seleccionado.ID);
+                pbxArticulo.Load(seleccionado.Imagen.ToString());
             }
             catch (Exception ex)
             {
@@ -183,8 +184,6 @@ namespace TrabajoPracticoWinForm
                 string campo = cboCampo.SelectedItem.ToString();
                 string criterio = cboCriterio.SelectedItem?.ToString();  // Criterio puede ser nulo para algunos casos como Precio
                 string filtro = txtFiltro.Text;
-
-
                 // Llamada a filtrar con o sin filtroExtra dependiendo del campo
                 dgvArticulos.DataSource = negocio.filtrar(campo, criterio, filtro);
             }

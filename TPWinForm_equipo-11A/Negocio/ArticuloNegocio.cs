@@ -76,7 +76,6 @@ namespace TrabajoPracticoWinForm
                 datos.cerrarConexion();
             }
         }
-
         public void modificar(Articulo articulo)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -132,7 +131,6 @@ namespace TrabajoPracticoWinForm
             }
 
         }
-
         public void eliminar(int id)
         {
             try
@@ -148,7 +146,6 @@ namespace TrabajoPracticoWinForm
                 throw ex;
             }
         }
-
         public List<Articulo> filtrar(string campo, string criterio, string filtro)
         {
             List<Articulo> lista = new List<Articulo>();
@@ -174,9 +171,7 @@ namespace TrabajoPracticoWinForm
                             case "Contiene":
                                 consulta += campo + " LIKE '%" + filtro + "%'";
                                 break;
-                        }
-                        break;
-
+                        }break;
                     // Filtro por rango de precios
                     case "Precio":
                         if (criterio == "Mayor a")
@@ -188,7 +183,6 @@ namespace TrabajoPracticoWinForm
                             consulta += "Precio < " + filtro;
                         }
                         break;
-
                     case "Marca":
                         if (criterio == "Igual a")
                         {
@@ -204,7 +198,6 @@ namespace TrabajoPracticoWinForm
                         }
                         break;
                 }
-
                 datos.setearConsulta(consulta);
                 datos.ejecutarLectura();
 
@@ -234,5 +227,26 @@ namespace TrabajoPracticoWinForm
                 throw ex;
             }
         }
+
+        //public void agregarImg(Articulo nuevo)
+        //{
+        //    AccesoDatos datos = new AccesoDatos();
+
+        //    try
+        //    {
+        //        datos.setearConsulta("INSERT INTO IMAGENES VALUES (@IdArticulo, @ImagenUrl)");
+        //        datos.setearParametro("@IdArticulo", nuevo.Imagen.IDArticulo);
+        //        datos.setearParametro("@ImagenUrl", nuevo.Imagen.ImagenUrl);
+        //        datos.ejecutarAccion();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //    finally
+        //    {
+        //        datos.cerrarConexion();
+        //    }
+        //}
     }
 }
