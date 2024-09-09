@@ -40,7 +40,12 @@ namespace TrabajoPracticoWinForm
             //MarcaNegocio negocioMarca = new MarcaNegocio();
             //listaMarca = negocioMarca.listar();
             //dvgMarcas.DataSource = listaMarca;
+
             cargar();
+
+            cboCampo.Items.Add("Codigo");
+            cboCampo.Items.Add("Nombre");
+            cboCampo.Items.Add("Descripcion");
         }
 
 
@@ -134,6 +139,40 @@ namespace TrabajoPracticoWinForm
 
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //string opcion = cboCampo.SelectedItem.ToString();
+            cboCriterio.Items.Clear();
+            cboCriterio.Items.Add("Comienza con");
+            cboCriterio.Items.Add("Termina con");
+            cboCriterio.Items.Add("Contiene");
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+
+            try
+            {
+                string campo = cboCampo.SelectedItem.ToString();
+                string criterio = cboCriterio.SelectedItem.ToString();
+                string filtro = txtFiltro.Text;
+                dgvArticulos.DataSource = negocio.filtrar(campo, criterio, filtro);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+            
+
         }
 
         /*private void cargarImagen(ArticuloNegocio imagen)
