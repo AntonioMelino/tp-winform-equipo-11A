@@ -194,6 +194,31 @@ namespace TrabajoPracticoWinForm
             }
         }
 
+        private void dgvArticulos_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                frmVerDetalle VD = new frmVerDetalle();
+                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                VD.txtCodigo.Text = seleccionado.Codigo;
+                VD.txtNombre.Text = seleccionado.Nombre.ToString();
+                VD.txtDescripcion.Text = seleccionado.Descripcion.ToString();
+                VD.txtMarca.Text = seleccionado.Marca.ToString();
+                VD.txtCategoria.Text = seleccionado.Categoria.ToString();
+                VD.txtPrecio.Text = seleccionado.Precio.ToString("F2");
+
+                if (seleccionado.Imagen.ImagenUrl != "")
+                {
+                    VD.pbImagen.Load(seleccionado.Imagen.ImagenUrl);
+                }
+                VD.ShowDialog();
+                cargar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         /*private void cargarImagen(ArticuloNegocio imagen)
         {
             try
