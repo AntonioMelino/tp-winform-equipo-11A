@@ -31,8 +31,6 @@
             this.dgvArticulos = new System.Windows.Forms.DataGridView();
             this.pbxArticulo = new System.Windows.Forms.PictureBox();
             this.lblTablaArticulos = new System.Windows.Forms.Label();
-            this.lblMarcas = new System.Windows.Forms.Label();
-            this.dvgMarcas = new System.Windows.Forms.DataGridView();
             this.btnAgregarArticulo = new System.Windows.Forms.Button();
             this.btnModificarArticulo = new System.Windows.Forms.Button();
             this.btnEliminarArticulo = new System.Windows.Forms.Button();
@@ -43,9 +41,10 @@
             this.lblFiltro = new System.Windows.Forms.Label();
             this.txtFiltro = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
+            this.btnIrMarcas = new System.Windows.Forms.Button();
+            this.btnIrCategorias = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dvgMarcas)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvArticulos
@@ -78,26 +77,6 @@
             this.lblTablaArticulos.Size = new System.Drawing.Size(231, 31);
             this.lblTablaArticulos.TabIndex = 17;
             this.lblTablaArticulos.Text = "Tabla de Articulos";
-            // 
-            // lblMarcas
-            // 
-            this.lblMarcas.AutoSize = true;
-            this.lblMarcas.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMarcas.Location = new System.Drawing.Point(795, 256);
-            this.lblMarcas.Name = "lblMarcas";
-            this.lblMarcas.Size = new System.Drawing.Size(215, 31);
-            this.lblMarcas.TabIndex = 18;
-            this.lblMarcas.Text = "Tabla de Marcas";
-            // 
-            // dvgMarcas
-            // 
-            this.dvgMarcas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvgMarcas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dvgMarcas.Location = new System.Drawing.Point(801, 290);
-            this.dvgMarcas.Name = "dvgMarcas";
-            this.dvgMarcas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dvgMarcas.Size = new System.Drawing.Size(238, 177);
-            this.dvgMarcas.TabIndex = 19;
             // 
             // btnAgregarArticulo
             // 
@@ -193,11 +172,33 @@
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
+            // btnIrMarcas
+            // 
+            this.btnIrMarcas.Location = new System.Drawing.Point(801, 287);
+            this.btnIrMarcas.Name = "btnIrMarcas";
+            this.btnIrMarcas.Size = new System.Drawing.Size(209, 23);
+            this.btnIrMarcas.TabIndex = 30;
+            this.btnIrMarcas.Text = "Marcas";
+            this.btnIrMarcas.UseVisualStyleBackColor = true;
+            this.btnIrMarcas.Click += new System.EventHandler(this.btnIrMarcas_Click);
+            // 
+            // btnIrCategorias
+            // 
+            this.btnIrCategorias.Location = new System.Drawing.Point(801, 352);
+            this.btnIrCategorias.Name = "btnIrCategorias";
+            this.btnIrCategorias.Size = new System.Drawing.Size(209, 23);
+            this.btnIrCategorias.TabIndex = 31;
+            this.btnIrCategorias.Text = "Categorias";
+            this.btnIrCategorias.UseVisualStyleBackColor = true;
+            this.btnIrCategorias.Click += new System.EventHandler(this.btnIrCategorias_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1087, 633);
+            this.Controls.Add(this.btnIrCategorias);
+            this.Controls.Add(this.btnIrMarcas);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtFiltro);
             this.Controls.Add(this.lblFiltro);
@@ -208,8 +209,6 @@
             this.Controls.Add(this.btnEliminarArticulo);
             this.Controls.Add(this.btnModificarArticulo);
             this.Controls.Add(this.btnAgregarArticulo);
-            this.Controls.Add(this.dvgMarcas);
-            this.Controls.Add(this.lblMarcas);
             this.Controls.Add(this.lblTablaArticulos);
             this.Controls.Add(this.pbxArticulo);
             this.Controls.Add(this.dgvArticulos);
@@ -220,7 +219,6 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dvgMarcas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -230,8 +228,6 @@
         private System.Windows.Forms.DataGridView dgvArticulos;
         private System.Windows.Forms.PictureBox pbxArticulo;
         private System.Windows.Forms.Label lblTablaArticulos;
-        private System.Windows.Forms.Label lblMarcas;
-        private System.Windows.Forms.DataGridView dvgMarcas;
         private System.Windows.Forms.Button btnAgregarArticulo;
         private System.Windows.Forms.Button btnModificarArticulo;
         private System.Windows.Forms.Button btnEliminarArticulo;
@@ -242,6 +238,8 @@
         private System.Windows.Forms.Label lblFiltro;
         private System.Windows.Forms.TextBox txtFiltro;
         private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.Button btnIrMarcas;
+        private System.Windows.Forms.Button btnIrCategorias;
     }
 }
 

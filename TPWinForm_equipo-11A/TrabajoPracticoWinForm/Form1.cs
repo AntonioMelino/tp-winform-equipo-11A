@@ -93,9 +93,9 @@ namespace TrabajoPracticoWinForm
             //pbxArticulo.Load(listaArticulo[0].Imagen.ImagenUrl);
             //cargarImagen(listaArticulo[0].Imagen.ImagenUrl);
             //pbxArticulo.Load();
-            MarcaNegocio negocioMarca = new MarcaNegocio();
-            listaMarca = negocioMarca.listar();
-            dvgMarcas.DataSource = listaMarca;
+            //MarcaNegocio negocioMarca = new MarcaNegocio();
+            //listaMarca = negocioMarca.listar();
+            //dvgMarcas.DataSource = listaMarca;
         }
 
         private void btnAgregarArticulo_Click(object sender, EventArgs e)
@@ -219,16 +219,30 @@ namespace TrabajoPracticoWinForm
                 throw ex;
             }
         }
-        /*private void cargarImagen(ArticuloNegocio imagen)
+
+        private void btnIrMarcas_Click(object sender, EventArgs e)
         {
-            try
-            {
-                pbxArticulo.Load();
-            }
-            catch (Exception ex)
-            {
-                pbxArticulo.Load("https://t4.ftcdn.net/jpg/05/17/53/57/360_F_517535712_q7f9QC9X6TQxWi6xYZZbMmw5cnLMr279.jpg");
-            }
-        }*/
+            frmMarcas marcas = new frmMarcas();
+            marcas.ShowDialog();
+            cargar();
+        }
+
+        private void btnIrCategorias_Click(object sender, EventArgs e)
+        {
+            frmCategorias categorias = new frmCategorias();
+            categorias.ShowDialog();
+            cargar();
+        }
+        /*private void cargarImagen(ArticuloNegocio imagen)
+{
+try
+{
+pbxArticulo.Load();
+}
+catch (Exception ex)
+{
+pbxArticulo.Load("https://t4.ftcdn.net/jpg/05/17/53/57/360_F_517535712_q7f9QC9X6TQxWi6xYZZbMmw5cnLMr279.jpg");
+}
+}*/
     }
 }

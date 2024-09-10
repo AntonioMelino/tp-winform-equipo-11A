@@ -1,0 +1,77 @@
+﻿using Dominio;
+using Negocio;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace TrabajoPracticoWinForm
+{
+    //private List<Marca> marcas;
+    public partial class frmMarcas : Form
+    {
+        public frmMarcas()
+        {
+            InitializeComponent();
+
+            cargar();
+        }
+
+        private void cargar()
+        {
+            
+            MarcaNegocio negocioMarca = new MarcaNegocio();
+            dgvMarcas.DataSource = negocioMarca.listar();
+
+        }
+
+        private void btnAgregarMarca_Click(object sender, EventArgs e)
+        {
+            frmAltaMarca alta = new frmAltaMarca();
+            alta.ShowDialog();
+            cargar();
+        }
+
+        private void dgvMarcas_SelectionChanged(object sender, EventArgs e)
+        {
+            Marca seleccionada = (Marca)dgvMarcas.CurrentRow.DataBoundItem;
+        }
+
+        private void btnModificarMarca_Click(object sender, EventArgs e)
+        {
+            Marca seleccionada;
+            seleccionada = (Marca)dgvMarcas.CurrentRow.DataBoundItem;
+            frmAltaMarca modificar = new frmAltaMarca(seleccionada);
+            modificar.ShowDialog();
+            cargar();
+        }
+
+        private void btnEliminarMarca_Click(object sender, EventArgs e)
+        {
+            MarcaNegocio negocio = new MarcaNegocio();
+            Marca seleccionada;
+
+            try
+            {
+                DialogResult respuesta = MessageBox.Show("Se eliminara permanentemente de nuestra base de datos, ¿Estás seguro?", "Eliminar Marca", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (respuesta == DialogResult.Yes)
+                {
+                    seleccionada = (Marca)dgvMarcas.CurrentRow.DataBoundItem;
+                    negocio.eliminarF(seleccionada.ID);
+                    cargar();
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
+    }
+}
