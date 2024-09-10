@@ -196,9 +196,28 @@ namespace TrabajoPracticoWinForm
 
         private void dgvArticulos_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            
+        }
+
+        private void btnIrMarcas_Click(object sender, EventArgs e)
+        {
+            frmMarcas marcas = new frmMarcas();
+            marcas.ShowDialog();
+            cargar();
+        }
+
+        private void btnIrCategorias_Click(object sender, EventArgs e)
+        {
+            frmCategorias categorias = new frmCategorias();
+            categorias.ShowDialog();
+            cargar();
+        }
+
+        private void dgvArticulos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            frmVerDetalle VD = new frmVerDetalle();
             try
-            {
-                frmVerDetalle VD = new frmVerDetalle();
+            {   
                 Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
                 VD.txtCodigo.Text = seleccionado.Codigo;
                 VD.txtNombre.Text = seleccionado.Nombre.ToString();
@@ -216,33 +235,10 @@ namespace TrabajoPracticoWinForm
             }
             catch (Exception ex)
             {
-                throw ex;
+                pbxArticulo.Load("https://t4.ftcdn.net/jpg/05/17/53/57/360_F_517535712_q7f9QC9X6TQxWi6xYZZbMmw5cnLMr279.jpg");
+                VD.pbImagen.Load("https://t4.ftcdn.net/jpg/05/17/53/57/360_F_517535712_q7f9QC9X6TQxWi6xYZZbMmw5cnLMr279.jpg");
+                VD.ShowDialog();
             }
         }
-
-        private void btnIrMarcas_Click(object sender, EventArgs e)
-        {
-            frmMarcas marcas = new frmMarcas();
-            marcas.ShowDialog();
-            cargar();
-        }
-
-        private void btnIrCategorias_Click(object sender, EventArgs e)
-        {
-            frmCategorias categorias = new frmCategorias();
-            categorias.ShowDialog();
-            cargar();
-        }
-        /*private void cargarImagen(ArticuloNegocio imagen)
-{
-try
-{
-pbxArticulo.Load();
-}
-catch (Exception ex)
-{
-pbxArticulo.Load("https://t4.ftcdn.net/jpg/05/17/53/57/360_F_517535712_q7f9QC9X6TQxWi6xYZZbMmw5cnLMr279.jpg");
-}
-}*/
     }
 }
