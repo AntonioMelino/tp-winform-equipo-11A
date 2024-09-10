@@ -53,7 +53,7 @@ namespace TrabajoPracticoWinForm
                 articulo.Precio = decimal.Parse(txtPrecioArticulo.Text);
                 if(articulo.ID != 0)
                 {
-                    Imagen img = new Imagen();
+                    //Imagen img = new Imagen();
                     ImgNegocio imgNegocio = new ImgNegocio();
                     if(cboImagenes.SelectedIndex != -1)
                     {
@@ -121,8 +121,6 @@ namespace TrabajoPracticoWinForm
                     cboImagenes.DropDownStyle = ComboBoxStyle.DropDownList;
                     cboCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
                     cboMarca.DropDownStyle = ComboBoxStyle.DropDownList;                
-                    //lblImagen.Visible = false;
-                    //txtImagenUrl.Visible = false;
                     lblImagenes.Visible= true;
                     cboImagenes.Visible = true;   
                     txtCodigoArticulo.Text = articulo.Codigo;
@@ -141,6 +139,11 @@ namespace TrabajoPracticoWinForm
 
                  throw;
             }
+        }
+
+        private void cboImagenes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

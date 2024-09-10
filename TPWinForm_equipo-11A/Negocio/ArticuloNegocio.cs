@@ -19,7 +19,7 @@ namespace TrabajoPracticoWinForm
 
             try
             {
-                datos.setearConsulta("SELECT DISTINCT A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion as NombreMarca, C.Descripcion as NombreCategoria, Precio, ImagenUrl, A.IdMarca, A.IdCategoria, A.Id FROM ARTICULOS as A, CATEGORIAS AS C, MARCAS AS M, IMAGENES AS I WHERE A.IdMarca = M.Id AND A.IdCategoria = C.Id AND A.Id = I.IdArticulo");
+                datos.setearConsulta("SELECT DISTINCT A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion as NombreMarca, C.Descripcion as NombreCategoria, Precio, ImagenUrl, I.Id as IDIMG, A.IdMarca, A.IdCategoria FROM ARTICULOS as A, CATEGORIAS AS C, MARCAS AS M, IMAGENES AS I WHERE A.IdMarca = M.Id AND A.IdCategoria = C.Id AND A.Id = I.IdArticulo");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -27,7 +27,7 @@ namespace TrabajoPracticoWinForm
                     Articulo aux = new Articulo();
                     aux.Marca = new Marca();
                     aux.Categoria = new Categoria();
-                    //aux.Imagen = new Imagen();
+                    aux.Imagen = new Imagen();
                     aux.ID = (int)datos.Lector["Id"];
                     aux.Codigo = (string)datos.Lector["Codigo"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
@@ -37,7 +37,9 @@ namespace TrabajoPracticoWinForm
                     aux.Categoria.ID = (int)datos.Lector["IdCategoria"];
                     aux.Categoria.Descripcion = datos.Lector["NombreCategoria"].ToString();
                     aux.Precio = (decimal)datos.Lector["Precio"];
-                    //aux.Imagen.ImagenUrl = (string)datos.Lector["ImagenUrl"];
+                    aux.Imagen.ID = (int)datos.Lector["IDIMG"];
+                    aux.Imagen.IDArticulo = (int)datos.Lector["Id"];
+                    aux.Imagen.ImagenUrl = (string)datos.Lector["ImagenUrl"];
                     lista.Add(aux);
 
                 }

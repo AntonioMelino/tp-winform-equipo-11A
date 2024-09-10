@@ -32,12 +32,11 @@ namespace Negocio
         }
         public Imagen traerImg(int id)
         {
-            List<Imagen> lista = new List<Imagen>();
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                datos.setearConsulta("SELECT * FROM IMAGENES WHERE Id = @id");
+                datos.setearConsulta("SELECT * FROM IMAGENES WHERE IdArticulo = @id");
                 datos.setearParametro("@id", id);
                 datos.ejecutarLectura();
                 Imagen aux = new Imagen();
@@ -65,7 +64,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("SELECT * FROM IMAGENES WHERE IdArticulo = @idart");
+                datos.setearConsulta("SELECT Id, IdArticulo, ImagenUrl FROM IMAGENES WHERE IdArticulo = @idart");
                 datos.setearParametro("@idart", idart);
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())

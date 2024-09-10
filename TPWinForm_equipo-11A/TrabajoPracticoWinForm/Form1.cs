@@ -67,13 +67,14 @@ namespace TrabajoPracticoWinForm
             Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
             //pbxArticulo.Load(seleccionado.Imagen.ImagenUrl);
             //cargarImagen(seleccionado.Imagen.ImagenUrl);
-            ImgNegocio imgNegocio = new ImgNegocio();
-            seleccionado.Imagen = new Imagen();
+            //ImgNegocio imgNegocio = new ImgNegocio();
+            //seleccionado.Imagen = new Imagen();
             try
             {
-                int id = imgNegocio.traerPrimerId(seleccionado.ID);
-                seleccionado.Imagen = imgNegocio.traerImg(seleccionado.ID);
-                pbxArticulo.Load(seleccionado.Imagen.ToString());
+                //int id = imgNegocio.traerPrimerId(seleccionado.ID);
+                //seleccionado.Imagen = imgNegocio.traerImg(seleccionado.ID);
+                //pbxArticulo.Load(seleccionado.Imagen.ToString());
+                pbxArticulo.Load(seleccionado.Imagen.ImagenUrl);
             }
             catch (Exception ex)
             {
@@ -87,7 +88,7 @@ namespace TrabajoPracticoWinForm
             ArticuloNegocio negocio = new ArticuloNegocio();
             listaArticulo = negocio.listar();
             dgvArticulos.DataSource = listaArticulo;
-            dgvArticulos.Columns["Id"].Visible = false;
+            //dgvArticulos.Columns["Id"].Visible = false;
             dgvArticulos.Columns["Imagen"].Visible = false;
             //pbxArticulo.Load(listaArticulo[0].Imagen.ImagenUrl);
             //cargarImagen(listaArticulo[0].Imagen.ImagenUrl);

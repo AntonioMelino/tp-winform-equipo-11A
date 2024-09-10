@@ -218,8 +218,9 @@
             this.cboImagenes.FormattingEnabled = true;
             this.cboImagenes.Location = new System.Drawing.Point(114, 272);
             this.cboImagenes.Name = "cboImagenes";
-            this.cboImagenes.Size = new System.Drawing.Size(121, 21);
+            this.cboImagenes.Size = new System.Drawing.Size(164, 21);
             this.cboImagenes.TabIndex = 19;
+            this.cboImagenes.SelectedIndexChanged += new System.EventHandler(this.cboImagenes_SelectedIndexChanged);
             // 
             // frmAltaArticulo
             // 
