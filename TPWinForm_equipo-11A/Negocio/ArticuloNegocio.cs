@@ -14,12 +14,13 @@ namespace TrabajoPracticoWinForm
     {
         public List<Articulo> listar()
         {
-            List<Articulo>lista = new List<Articulo>();
+            List<Articulo> lista = new List<Articulo>();
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                datos.setearConsulta("SELECT DISTINCT A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion as NombreMarca, C.Descripcion as NombreCategoria, Precio, ImagenUrl, I.Id as IDIMG, A.IdMarca, A.IdCategoria FROM ARTICULOS as A, CATEGORIAS AS C, MARCAS AS M, IMAGENES AS I WHERE A.IdMarca = M.Id AND A.IdCategoria = C.Id AND A.Id = I.IdArticulo");
+                //datos.setearConsulta("SELECT DISTINCT A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion as NombreMarca, C.Descripcion as NombreCategoria, Precio, (SELECT TOP 1 ImagenUrl FROM IMAGENES WHERE IdArticulo = A.Id) as ImagenUrl, A.IdMarca, A.IdCategoria FROM ARTICULOS as A, CATEGORIAS AS C, MARCAS AS M, IMAGENES AS I WHERE A.IdMarca = M.Id AND A.IdCategoria = C.Id AND A.Id = I.IdArticulo");
+                datos.setearConsulta("SELECT A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion as NombreMarca, C.Descripcion as NombreCategoria, Precio, (SELECT TOP 1 ImagenUrl FROM IMAGENES WHERE IdArticulo = A.Id) as ImagenUrl, A.IdMarca, A.IdCategoria FROM ARTICULOS as A JOIN CATEGORIAS AS C ON A.IdCategoria = C.Id JOIN MARCAS AS M ON A.IdMarca = M.Id");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -27,7 +28,6 @@ namespace TrabajoPracticoWinForm
                     Articulo aux = new Articulo();
                     aux.Marca = new Marca();
                     aux.Categoria = new Categoria();
-                    aux.Imagen = new Imagen();
                     aux.ID = (int)datos.Lector["Id"];
                     aux.Codigo = (string)datos.Lector["Codigo"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
@@ -37,11 +37,9 @@ namespace TrabajoPracticoWinForm
                     aux.Categoria.ID = (int)datos.Lector["IdCategoria"];
                     aux.Categoria.Descripcion = datos.Lector["NombreCategoria"].ToString();
                     aux.Precio = (decimal)datos.Lector["Precio"];
-                    aux.Imagen.ID = (int)datos.Lector["IDIMG"];
-                    aux.Imagen.IDArticulo = (int)datos.Lector["Id"];
-                    aux.Imagen.ImagenUrl = (string)datos.Lector["ImagenUrl"];
+                    aux.Imagen = new Imagen();
+                    aux.Imagen.ImagenUrl = datos.Lector["ImagenUrl"].ToString();
                     lista.Add(aux);
-
                 }
                 return lista;
             }
@@ -54,6 +52,7 @@ namespace TrabajoPracticoWinForm
                 datos.cerrarConexion();
             }
         }
+
         public void agregar(Articulo nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
