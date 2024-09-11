@@ -115,8 +115,7 @@ namespace TrabajoPracticoWinForm
                 datos.setearConsulta("SELECT top 1 * FROM ARTICULOS ORDER BY id DESC ");
                 datos.ejecutarLectura();
                 if (datos.Lector.Read())
-                {
-                    // Leer el valor de "Id" de la primera fila
+                {                    
                     art = Convert.ToInt32(datos.Lector["Id"]);
                 }
                 return art;
@@ -173,7 +172,7 @@ namespace TrabajoPracticoWinForm
                                 consulta += campo + " LIKE '%" + filtro + "%'";
                                 break;
                         }break;
-                    // Filtro por rango de precios
+
                     case "Precio":
                         if (criterio == "Mayor a")
                         {

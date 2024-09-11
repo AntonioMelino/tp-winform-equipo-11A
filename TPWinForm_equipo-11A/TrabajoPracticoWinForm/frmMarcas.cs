@@ -12,9 +12,10 @@ using System.Windows.Forms;
 
 namespace TrabajoPracticoWinForm
 {
-    //private List<Marca> listaMarcas;
+    
     public partial class frmMarcas : Form
     {
+        private List<Marca> listaMarca;
         public frmMarcas()
         {
             InitializeComponent();
@@ -26,6 +27,7 @@ namespace TrabajoPracticoWinForm
         {
             
             MarcaNegocio negocioMarca = new MarcaNegocio();
+            listaMarca = negocioMarca.listar();
             dgvMarcas.DataSource = negocioMarca.listar();
 
         }
@@ -82,6 +84,34 @@ namespace TrabajoPracticoWinForm
         private void txtFiltroMarcas_TextChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void btnBuscarMarcas_Click(object sender, EventArgs e)
+        {
+            List<Marca> listaFiltrada;
+            string filtro = txtFiltroMarcas.Text.ToLower();
+
+            if (filtro.Length >= 3)
+            {
+                listaFiltrada = listaMarca.FindAll(x => x.Descripcion.ToLower().Contains(filtro));
+            }
+            else
+            {
+                listaFiltrada = listaMarca; 
+            }
+
+            dgvMarcas.DataSource = null;
+            dgvMarcas.DataSource = listaFiltrada;
+
+            if (listaFiltrada.Count == 0)
+            {
+                MessageBox.Show("No se encontraron marcas con el filtro ingresado.", "Buscar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnRefrescarMarca_Click(object sender, EventArgs e)
+        {
+            cargar();
         }
     }
 }

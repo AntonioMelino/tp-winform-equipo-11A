@@ -34,6 +34,10 @@
             this.lblCategorias = new System.Windows.Forms.Label();
             this.dgvCategoria = new System.Windows.Forms.DataGridView();
             this.btnVolverCategoria = new System.Windows.Forms.Button();
+            this.btnBuscarCat = new System.Windows.Forms.Button();
+            this.txtFiltroCat = new System.Windows.Forms.TextBox();
+            this.lblFiltroCat = new System.Windows.Forms.Label();
+            this.btnRefrescarCat = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategoria)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,7 +75,7 @@
             // 
             this.lblCategorias.AutoSize = true;
             this.lblCategorias.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategorias.Location = new System.Drawing.Point(37, 42);
+            this.lblCategorias.Location = new System.Drawing.Point(36, 31);
             this.lblCategorias.Name = "lblCategorias";
             this.lblCategorias.Size = new System.Drawing.Size(298, 33);
             this.lblCategorias.TabIndex = 4;
@@ -98,11 +102,51 @@
             this.btnVolverCategoria.UseVisualStyleBackColor = true;
             this.btnVolverCategoria.Click += new System.EventHandler(this.btnVolverCategoria_Click);
             // 
+            // btnBuscarCat
+            // 
+            this.btnBuscarCat.Location = new System.Drawing.Point(274, 76);
+            this.btnBuscarCat.Name = "btnBuscarCat";
+            this.btnBuscarCat.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscarCat.TabIndex = 11;
+            this.btnBuscarCat.Text = "Buscar";
+            this.btnBuscarCat.UseVisualStyleBackColor = true;
+            this.btnBuscarCat.Click += new System.EventHandler(this.btnBuscarCat_Click);
+            // 
+            // txtFiltroCat
+            // 
+            this.txtFiltroCat.Location = new System.Drawing.Point(91, 78);
+            this.txtFiltroCat.Name = "txtFiltroCat";
+            this.txtFiltroCat.Size = new System.Drawing.Size(177, 20);
+            this.txtFiltroCat.TabIndex = 10;
+            // 
+            // lblFiltroCat
+            // 
+            this.lblFiltroCat.AutoSize = true;
+            this.lblFiltroCat.Location = new System.Drawing.Point(39, 81);
+            this.lblFiltroCat.Name = "lblFiltroCat";
+            this.lblFiltroCat.Size = new System.Drawing.Size(47, 13);
+            this.lblFiltroCat.TabIndex = 9;
+            this.lblFiltroCat.Text = "Nombre:";
+            // 
+            // btnRefrescarCat
+            // 
+            this.btnRefrescarCat.Location = new System.Drawing.Point(355, 76);
+            this.btnRefrescarCat.Name = "btnRefrescarCat";
+            this.btnRefrescarCat.Size = new System.Drawing.Size(107, 23);
+            this.btnRefrescarCat.TabIndex = 12;
+            this.btnRefrescarCat.Text = "Reestablecer lista";
+            this.btnRefrescarCat.UseVisualStyleBackColor = true;
+            this.btnRefrescarCat.Click += new System.EventHandler(this.btnRefrescarCat_Click);
+            // 
             // frmCategorias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnRefrescarCat);
+            this.Controls.Add(this.btnBuscarCat);
+            this.Controls.Add(this.txtFiltroCat);
+            this.Controls.Add(this.lblFiltroCat);
             this.Controls.Add(this.btnVolverCategoria);
             this.Controls.Add(this.dgvCategoria);
             this.Controls.Add(this.lblCategorias);
@@ -128,5 +172,9 @@
         private System.Windows.Forms.Label lblCategorias;
         private System.Windows.Forms.DataGridView dgvCategoria;
         private System.Windows.Forms.Button btnVolverCategoria;
+        private System.Windows.Forms.Button btnBuscarCat;
+        private System.Windows.Forms.TextBox txtFiltroCat;
+        private System.Windows.Forms.Label lblFiltroCat;
+        private System.Windows.Forms.Button btnRefrescarCat;
     }
 }

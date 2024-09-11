@@ -14,6 +14,7 @@ namespace TrabajoPracticoWinForm
 {
     public partial class frmCategorias : Form
     {
+        private List<Categoria> listaCategoria;
         public frmCategorias()
         {
             InitializeComponent();
@@ -25,6 +26,7 @@ namespace TrabajoPracticoWinForm
         {
 
             CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+            listaCategoria = categoriaNegocio.listar();
             dgvCategoria.DataSource = categoriaNegocio.listar();
 
         }
@@ -76,6 +78,34 @@ namespace TrabajoPracticoWinForm
         private void btnVolverCategoria_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnBuscarCat_Click(object sender, EventArgs e)
+        {
+            List<Categoria> listaFiltrada;
+            string filtro = txtFiltroCat.Text.ToLower(); 
+
+            if (filtro.Length >= 3)
+            {
+                listaFiltrada = listaCategoria.FindAll(x => x.Descripcion.ToLower().Contains(filtro));
+            }
+            else
+            {
+                listaFiltrada = listaCategoria;
+            }
+
+            dgvCategoria.DataSource = null;
+            dgvCategoria.DataSource = listaFiltrada;
+
+            if (listaFiltrada.Count == 0)
+            {
+                MessageBox.Show("No se encontraron categorías con el filtro ingresado.", "Buscar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnRefrescarCat_Click(object sender, EventArgs e)
+        {
+            cargar();
         }
     }
 }
