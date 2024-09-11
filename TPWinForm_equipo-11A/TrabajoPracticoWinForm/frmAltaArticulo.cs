@@ -85,17 +85,18 @@ namespace TrabajoPracticoWinForm
                 articulo.Marca = (Marca)cboMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
                 articulo.Precio = decimal.Parse(txtPrecioArticulo.Text);
-                if(articulo.ID != 0)
+                //articulo.Precio= Convert.ToDecimal(txtPrecioArticulo.Text);
+                if (articulo.ID != 0)
                 {
                     //Imagen img = new Imagen();
                     ImgNegocio imgNegocio = new ImgNegocio();
                     if(cboImagenes.SelectedIndex != -1)
-                    {
-                    articulo.Imagen = (Imagen)cboImagenes.SelectedItem;
-                    //img = imgNegocio.traerImg(articulo.Imagen.ID);
-                    articulo.Imagen.ImagenUrl = txtImagenUrl.Text; // FUNCIONA USANDO EL TXT DE LA IMAGEN DEL ALTA
-                    //img.IDArticulo = articulo.ID;
-                    imgNegocio.modificar(articulo.Imagen);
+                    {  
+                        articulo.Imagen = (Imagen)cboImagenes.SelectedItem;                       
+                        //img = imgNegocio.traerImg(articulo.Imagen.ID);
+                        articulo.Imagen.ImagenUrl = txtImagenUrl.Text; // FUNCIONA USANDO EL TXT DE LA IMAGEN DEL ALTA
+                        //img.IDArticulo = articulo.ID;
+                        imgNegocio.modificar(articulo.Imagen);
                     }
                     negocio.modificar(articulo);
                     MessageBox.Show("Modificado exitosamente");
@@ -146,26 +147,27 @@ namespace TrabajoPracticoWinForm
                 cboMarca.DisplayMember = "Descripcion";
                 cboCategoria.DisplayMember = "Descripcion";
                 lblImagenes.Visible = false;
-                cboImagenes.Visible = false;
+                cboImagenes.Visible = false;      
+                cboCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
+                cboMarca.DropDownStyle = ComboBoxStyle.DropDownList;
                 if (articulo != null)
                 {   
                     cboImagenes.DataSource = imgnegocio.listar_x_id(articulo.ID);
                     cboImagenes.ValueMember = "Id";
                     cboImagenes.DisplayMember = "ImagenUrl";
                     cboImagenes.DropDownStyle = ComboBoxStyle.DropDownList;
-                    cboCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
-                    cboMarca.DropDownStyle = ComboBoxStyle.DropDownList;                
+                    txtImagenUrl.Enabled = false;
                     lblImagenes.Visible= true;
                     cboImagenes.Visible = true;   
                     txtCodigoArticulo.Text = articulo.Codigo;
                     txtNombreArticulo.Text = articulo.Nombre;
                     txtDescripcionArticulo.Text = articulo.Descripcion;
-                    txtPrecioArticulo.Text = articulo.Precio.ToString();
+                    txtPrecioArticulo.Text = articulo.Precio.ToString("F2");
                     //txtImagenUrl.Text = articulo.Imagen.ImagenUrl;
                     //articulo.Imagen = new Imagen();
                     cboImagenes.SelectedValue = articulo.Imagen.ID;
                     cboMarca.SelectedValue = articulo.Marca.ID;
-                    cboCategoria.SelectedValue = articulo.Categoria.ID;          
+                    cboCategoria.SelectedValue = articulo.Categoria.ID;
                 }
             }
             catch (Exception)
@@ -174,10 +176,35 @@ namespace TrabajoPracticoWinForm
                  throw;
             }
         }
-
-        private void cboImagenes_SelectedIndexChanged(object sender, EventArgs e)
+        private void txtPrecioArticulo_KeyPress(object sender, KeyPressEventArgs e)
         {
+                if ((e.KeyChar < 48 || e.KeyChar > 59) && e.KeyChar != 8)
+                    e.Handled = true;
+                
+                //SI TOCAS UNA TECLA QUE NO ES UN NUMERO NO DIGITA NADA EN PRECIO
+        }
+        private void cboImagenes_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            txtImagenUrl.Enabled = true;
+            
+            // TE HABILITA EL TXT DE IMAGEN URL CUANDO UNO SELECIONA Y CIERRA UNA FOTO PARA MODIFICARLA
+        }
+        private void cboImagenes_SelectedValueChanged(object sender, EventArgs e)
+        {
+            //articulo.Imagen = (Imagen)cboImagenes.SelectedItem;
+            //pbxArticuloAlta.Load(articulo.Imagen.ImagenUrl);
+            
+            // ESTO SUCEDE EN LA SELECCIONA DE IMAGENES (MODIFICAR)
+            //CAMBIA LA FOTO PERO SI ES CORRUPTA O NO ES UNA FOTO COMO TAL, PINCHA
 
+        }
+
+        private void txtImagenUrl_TextChanged(object sender, EventArgs e)
+        {
+            //pbxArticuloAlta.Load(txtImagenUrl.Text);
+            
+            //MUESTRA LA FOTO PERO SI ES CORRUPTA O NO ES UNA FOTO COMO TAL, PINCHA
+            // ESTO SUCEDE EN EL ALTA
         }
     }
 }
