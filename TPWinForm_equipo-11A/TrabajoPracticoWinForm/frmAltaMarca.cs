@@ -14,7 +14,7 @@ namespace TrabajoPracticoWinForm
 {
     public partial class frmAltaMarca : Form
     {
-        Marca marca = null;
+        private Marca marca = null;
         public frmAltaMarca()
         {
             InitializeComponent();
@@ -59,6 +59,23 @@ namespace TrabajoPracticoWinForm
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void frmAltaMarca_Load(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (marca != null)
+                {
+                    txtDescripcionMarca.Text = marca.Descripcion;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
     }

@@ -188,7 +188,10 @@
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.lblCodigo);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.MaximumSize = new System.Drawing.Size(624, 351);
+            this.MinimumSize = new System.Drawing.Size(624, 351);
             this.Name = "frmVerDetalle";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Detalle Articulo";
             this.Load += new System.EventHandler(this.frmVerDetalle_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).EndInit();

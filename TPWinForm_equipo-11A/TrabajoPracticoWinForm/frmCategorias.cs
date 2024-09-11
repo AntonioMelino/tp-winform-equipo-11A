@@ -72,5 +72,10 @@ namespace TrabajoPracticoWinForm
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void btnVolverCategoria_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

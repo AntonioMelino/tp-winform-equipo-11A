@@ -63,5 +63,22 @@ namespace TrabajoPracticoWinForm
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void frmAltaCategoria_Load(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (categoria != null)
+                {
+                    txtDescripcionCategoria.Text = categoria.Descripcion;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

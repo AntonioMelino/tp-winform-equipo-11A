@@ -82,21 +82,21 @@
             // 
             this.txtNombreArticulo.Location = new System.Drawing.Point(114, 112);
             this.txtNombreArticulo.Name = "txtNombreArticulo";
-            this.txtNombreArticulo.Size = new System.Drawing.Size(121, 20);
+            this.txtNombreArticulo.Size = new System.Drawing.Size(164, 20);
             this.txtNombreArticulo.TabIndex = 1;
             // 
             // txtCodigoArticulo
             // 
             this.txtCodigoArticulo.Location = new System.Drawing.Point(114, 86);
             this.txtCodigoArticulo.Name = "txtCodigoArticulo";
-            this.txtCodigoArticulo.Size = new System.Drawing.Size(121, 20);
+            this.txtCodigoArticulo.Size = new System.Drawing.Size(164, 20);
             this.txtCodigoArticulo.TabIndex = 0;
             // 
             // txtDescripcionArticulo
             // 
             this.txtDescripcionArticulo.Location = new System.Drawing.Point(114, 141);
             this.txtDescripcionArticulo.Name = "txtDescripcionArticulo";
-            this.txtDescripcionArticulo.Size = new System.Drawing.Size(122, 20);
+            this.txtDescripcionArticulo.Size = new System.Drawing.Size(164, 20);
             this.txtDescripcionArticulo.TabIndex = 2;
             // 
             // lblPrecioArticulo
@@ -112,25 +112,25 @@
             // 
             this.txtPrecioArticulo.Location = new System.Drawing.Point(114, 220);
             this.txtPrecioArticulo.Name = "txtPrecioArticulo";
-            this.txtPrecioArticulo.Size = new System.Drawing.Size(122, 20);
+            this.txtPrecioArticulo.Size = new System.Drawing.Size(164, 20);
             this.txtPrecioArticulo.TabIndex = 5;
             // 
             // btnAceptarArticulo
             // 
-            this.btnAceptarArticulo.Location = new System.Drawing.Point(53, 312);
+            this.btnAceptarArticulo.Location = new System.Drawing.Point(49, 312);
             this.btnAceptarArticulo.Name = "btnAceptarArticulo";
-            this.btnAceptarArticulo.Size = new System.Drawing.Size(75, 23);
-            this.btnAceptarArticulo.TabIndex = 6;
+            this.btnAceptarArticulo.Size = new System.Drawing.Size(104, 23);
+            this.btnAceptarArticulo.TabIndex = 8;
             this.btnAceptarArticulo.Text = "Aceptar";
             this.btnAceptarArticulo.UseVisualStyleBackColor = true;
             this.btnAceptarArticulo.Click += new System.EventHandler(this.btnAceptarArticulo_Click);
             // 
             // btnCancelarArticulo
             // 
-            this.btnCancelarArticulo.Location = new System.Drawing.Point(161, 312);
+            this.btnCancelarArticulo.Location = new System.Drawing.Point(176, 312);
             this.btnCancelarArticulo.Name = "btnCancelarArticulo";
-            this.btnCancelarArticulo.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelarArticulo.TabIndex = 7;
+            this.btnCancelarArticulo.Size = new System.Drawing.Size(102, 23);
+            this.btnCancelarArticulo.TabIndex = 9;
             this.btnCancelarArticulo.Text = "Cancelar";
             this.btnCancelarArticulo.UseVisualStyleBackColor = true;
             this.btnCancelarArticulo.Click += new System.EventHandler(this.btnCancelarArticulo_Click);
@@ -168,7 +168,7 @@
             this.cboCategoria.FormattingEnabled = true;
             this.cboCategoria.Location = new System.Drawing.Point(114, 194);
             this.cboCategoria.Name = "cboCategoria";
-            this.cboCategoria.Size = new System.Drawing.Size(121, 21);
+            this.cboCategoria.Size = new System.Drawing.Size(164, 21);
             this.cboCategoria.TabIndex = 4;
             // 
             // cboMarca
@@ -176,7 +176,7 @@
             this.cboMarca.FormattingEnabled = true;
             this.cboMarca.Location = new System.Drawing.Point(114, 167);
             this.cboMarca.Name = "cboMarca";
-            this.cboMarca.Size = new System.Drawing.Size(121, 21);
+            this.cboMarca.Size = new System.Drawing.Size(164, 21);
             this.cboMarca.TabIndex = 3;
             // 
             // lblImagen
@@ -192,8 +192,8 @@
             // 
             this.txtImagenUrl.Location = new System.Drawing.Point(114, 246);
             this.txtImagenUrl.Name = "txtImagenUrl";
-            this.txtImagenUrl.Size = new System.Drawing.Size(122, 20);
-            this.txtImagenUrl.TabIndex = 16;
+            this.txtImagenUrl.Size = new System.Drawing.Size(164, 20);
+            this.txtImagenUrl.TabIndex = 6;
             // 
             // pbxArticuloAlta
             // 
@@ -219,7 +219,7 @@
             this.cboImagenes.Location = new System.Drawing.Point(114, 272);
             this.cboImagenes.Name = "cboImagenes";
             this.cboImagenes.Size = new System.Drawing.Size(164, 21);
-            this.cboImagenes.TabIndex = 19;
+            this.cboImagenes.TabIndex = 7;
             this.cboImagenes.SelectedIndexChanged += new System.EventHandler(this.cboImagenes_SelectedIndexChanged);
             // 
             // frmAltaArticulo
@@ -247,6 +247,8 @@
             this.Controls.Add(this.lblDescripcionArticulo);
             this.Controls.Add(this.lblCodigoArticulo);
             this.Controls.Add(this.lblNombreArticulo);
+            this.MaximumSize = new System.Drawing.Size(663, 414);
+            this.MinimumSize = new System.Drawing.Size(663, 414);
             this.Name = "frmAltaArticulo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo Articulo";

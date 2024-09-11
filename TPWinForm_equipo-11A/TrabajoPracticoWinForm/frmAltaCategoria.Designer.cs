@@ -37,20 +37,20 @@
             // 
             // btnAceptarCategoria
             // 
-            this.btnAceptarCategoria.Location = new System.Drawing.Point(81, 209);
+            this.btnAceptarCategoria.Location = new System.Drawing.Point(12, 149);
             this.btnAceptarCategoria.Name = "btnAceptarCategoria";
-            this.btnAceptarCategoria.Size = new System.Drawing.Size(75, 23);
-            this.btnAceptarCategoria.TabIndex = 0;
+            this.btnAceptarCategoria.Size = new System.Drawing.Size(94, 23);
+            this.btnAceptarCategoria.TabIndex = 1;
             this.btnAceptarCategoria.Text = "Aceptar";
             this.btnAceptarCategoria.UseVisualStyleBackColor = true;
             this.btnAceptarCategoria.Click += new System.EventHandler(this.btnAceptarCategoria_Click);
             // 
             // btnCancelarCategoria
             // 
-            this.btnCancelarCategoria.Location = new System.Drawing.Point(227, 208);
+            this.btnCancelarCategoria.Location = new System.Drawing.Point(117, 149);
             this.btnCancelarCategoria.Name = "btnCancelarCategoria";
-            this.btnCancelarCategoria.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelarCategoria.TabIndex = 1;
+            this.btnCancelarCategoria.Size = new System.Drawing.Size(94, 23);
+            this.btnCancelarCategoria.TabIndex = 2;
             this.btnCancelarCategoria.Text = "Cancelar";
             this.btnCancelarCategoria.UseVisualStyleBackColor = true;
             this.btnCancelarCategoria.Click += new System.EventHandler(this.btnCancelarCategoria_Click);
@@ -59,16 +59,16 @@
             // 
             this.lblAltaCategoria.AutoSize = true;
             this.lblAltaCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAltaCategoria.Location = new System.Drawing.Point(72, 40);
+            this.lblAltaCategoria.Location = new System.Drawing.Point(12, 20);
             this.lblAltaCategoria.Name = "lblAltaCategoria";
             this.lblAltaCategoria.Size = new System.Drawing.Size(199, 33);
-            this.lblAltaCategoria.TabIndex = 2;
+            this.lblAltaCategoria.TabIndex = 4;
             this.lblAltaCategoria.Text = "Alta Categoria";
             // 
             // lblDescripcionCategoria
             // 
             this.lblDescripcionCategoria.AutoSize = true;
-            this.lblDescripcionCategoria.Location = new System.Drawing.Point(52, 114);
+            this.lblDescripcionCategoria.Location = new System.Drawing.Point(15, 80);
             this.lblDescripcionCategoria.Name = "lblDescripcionCategoria";
             this.lblDescripcionCategoria.Size = new System.Drawing.Size(66, 13);
             this.lblDescripcionCategoria.TabIndex = 3;
@@ -76,23 +76,27 @@
             // 
             // txtDescripcionCategoria
             // 
-            this.txtDescripcionCategoria.Location = new System.Drawing.Point(138, 114);
+            this.txtDescripcionCategoria.Location = new System.Drawing.Point(87, 80);
             this.txtDescripcionCategoria.Name = "txtDescripcionCategoria";
-            this.txtDescripcionCategoria.Size = new System.Drawing.Size(100, 20);
-            this.txtDescripcionCategoria.TabIndex = 4;
+            this.txtDescripcionCategoria.Size = new System.Drawing.Size(124, 20);
+            this.txtDescripcionCategoria.TabIndex = 0;
             // 
             // frmAltaCategoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(403, 313);
+            this.ClientSize = new System.Drawing.Size(300, 192);
             this.Controls.Add(this.txtDescripcionCategoria);
             this.Controls.Add(this.lblDescripcionCategoria);
             this.Controls.Add(this.lblAltaCategoria);
             this.Controls.Add(this.btnCancelarCategoria);
             this.Controls.Add(this.btnAceptarCategoria);
+            this.MaximumSize = new System.Drawing.Size(316, 231);
+            this.MinimumSize = new System.Drawing.Size(316, 231);
             this.Name = "frmAltaCategoria";
-            this.Text = "frmAltaCategoria";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Alta Categoria";
+            this.Load += new System.EventHandler(this.frmAltaCategoria_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

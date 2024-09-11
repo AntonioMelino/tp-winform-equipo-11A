@@ -240,5 +240,38 @@ namespace TrabajoPracticoWinForm
                 VD.ShowDialog();
             }
         }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnMostrarDetalleArticulo_Click(object sender, EventArgs e)
+        {
+            frmVerDetalle VD = new frmVerDetalle();
+            try
+            {
+                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                VD.txtCodigo.Text = seleccionado.Codigo;
+                VD.txtNombre.Text = seleccionado.Nombre.ToString();
+                VD.txtDescripcion.Text = seleccionado.Descripcion.ToString();
+                VD.txtMarca.Text = seleccionado.Marca.ToString();
+                VD.txtCategoria.Text = seleccionado.Categoria.ToString();
+                VD.txtPrecio.Text = seleccionado.Precio.ToString("F2");
+
+                if (seleccionado.Imagen.ImagenUrl != "")
+                {
+                    VD.pbImagen.Load(seleccionado.Imagen.ImagenUrl);
+                }
+                VD.ShowDialog();
+                cargar();
+            }
+            catch (Exception ex)
+            {
+                pbxArticulo.Load("https://t4.ftcdn.net/jpg/05/17/53/57/360_F_517535712_q7f9QC9X6TQxWi6xYZZbMmw5cnLMr279.jpg");
+                VD.pbImagen.Load("https://t4.ftcdn.net/jpg/05/17/53/57/360_F_517535712_q7f9QC9X6TQxWi6xYZZbMmw5cnLMr279.jpg");
+                VD.ShowDialog();
+            }
+        }
     }
 }

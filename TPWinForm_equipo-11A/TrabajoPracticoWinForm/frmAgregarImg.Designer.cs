@@ -67,6 +67,8 @@
             this.Controls.Add(this.btnAddImage);
             this.Controls.Add(this.txtImage);
             this.Controls.Add(this.lblImg);
+            this.MaximumSize = new System.Drawing.Size(431, 183);
+            this.MinimumSize = new System.Drawing.Size(431, 183);
             this.Name = "frmAgregarImg";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar otra imagen";
