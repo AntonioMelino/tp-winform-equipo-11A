@@ -113,11 +113,33 @@ namespace TrabajoPracticoWinForm
 
         private void btnModificarArticulo_Click(object sender, EventArgs e)
         {
-            Articulo seleccionado;
-            seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-            frmAltaArticulo modificar = new frmAltaArticulo(seleccionado);
-            modificar.ShowDialog();
-            cargar();
+            try
+            {
+                if (dgvArticulos.CurrentRow != null)
+                {
+                    //MessageBox.Show("Por favor aprete el boton de Restablecer");
+                    Articulo seleccionado;
+                    seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                    frmAltaArticulo modificar = new frmAltaArticulo(seleccionado);
+                    modificar.ShowDialog();
+                    cargar();
+                }
+                else
+                {
+                    MessageBox.Show("Error en la selección del artículo");
+                    cargar();
+                }
+
+                //Articulo seleccionado;
+                //seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                //frmAltaArticulo modificar = new frmAltaArticulo(seleccionado);
+                //modificar.ShowDialog();
+                //cargar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void btnEliminarArticulo_Click(object sender, EventArgs e)
@@ -126,14 +148,30 @@ namespace TrabajoPracticoWinForm
             Articulo seleccionado;
 
             try
-            {
-                DialogResult respuesta = MessageBox.Show("Se eliminara permanentemente de nuestra base de datos, ¿Estás seguro?", "Eliminar Articulo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if(respuesta == DialogResult.Yes)
+            {   
+                if (dgvArticulos.CurrentRow != null)
                 {
-                    seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-                    negocio.eliminar(seleccionado.ID);
+                    DialogResult respuesta = MessageBox.Show("Se eliminara permanentemente de nuestra base de datos, ¿Estás seguro?", "Eliminar Articulo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (respuesta == DialogResult.Yes)
+                    {
+                        seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                        negocio.eliminar(seleccionado.ID);
+                        cargar();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Error en la selección del artículo");
                     cargar();
                 }
+
+                //DialogResult respuesta = MessageBox.Show("Se eliminara permanentemente de nuestra base de datos, ¿Estás seguro?", "Eliminar Articulo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                //if(respuesta == DialogResult.Yes)
+                //{
+                //    seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                //    negocio.eliminar(seleccionado.ID);
+                //    cargar();
+                //}
                 
             }
             catch (Exception ex)
@@ -275,21 +313,44 @@ namespace TrabajoPracticoWinForm
         {
             frmVerDetalle VD = new frmVerDetalle();
             try
-            {
-                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-                VD.txtCodigo.Text = seleccionado.Codigo;
-                VD.txtNombre.Text = seleccionado.Nombre.ToString();
-                VD.txtDescripcion.Text = seleccionado.Descripcion.ToString();
-                VD.txtMarca.Text = seleccionado.Marca.ToString();
-                VD.txtCategoria.Text = seleccionado.Categoria.ToString();
-                VD.txtPrecio.Text = seleccionado.Precio.ToString("F2");
-
-                if (seleccionado.Imagen.ImagenUrl != "")
+            {   
+                if(dgvArticulos.CurrentRow != null)
                 {
-                    VD.pbImagen.Load(seleccionado.Imagen.ImagenUrl);
+                    Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                    VD.txtCodigo.Text = seleccionado.Codigo;
+                    VD.txtNombre.Text = seleccionado.Nombre.ToString();
+                    VD.txtDescripcion.Text = seleccionado.Descripcion.ToString();
+                    VD.txtMarca.Text = seleccionado.Marca.ToString();
+                    VD.txtCategoria.Text = seleccionado.Categoria.ToString();
+                    VD.txtPrecio.Text = seleccionado.Precio.ToString("F2");
+
+                    if (seleccionado.Imagen.ImagenUrl != "")
+                    {
+                        VD.pbImagen.Load(seleccionado.Imagen.ImagenUrl);
+                    }
+                    VD.ShowDialog();
+                    cargar();
                 }
-                VD.ShowDialog();
-                cargar();
+                else
+                {
+                    MessageBox.Show("Error en la selección del artículo");
+                    cargar();
+                }
+
+                //Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                //VD.txtCodigo.Text = seleccionado.Codigo;
+                //VD.txtNombre.Text = seleccionado.Nombre.ToString();
+                //VD.txtDescripcion.Text = seleccionado.Descripcion.ToString();
+                //VD.txtMarca.Text = seleccionado.Marca.ToString();
+                //VD.txtCategoria.Text = seleccionado.Categoria.ToString();
+                //VD.txtPrecio.Text = seleccionado.Precio.ToString("F2");
+
+                //if (seleccionado.Imagen.ImagenUrl != "")
+                //{
+                //    VD.pbImagen.Load(seleccionado.Imagen.ImagenUrl);
+                //}
+                //VD.ShowDialog();
+                //cargar();
             }
             catch (Exception ex)
             {
@@ -301,6 +362,7 @@ namespace TrabajoPracticoWinForm
 
         private void btnRestablecerBusquedaArticulo_Click(object sender, EventArgs e)
         {
+            txtFiltro.Text = ("");
             cargar();
         }
     }

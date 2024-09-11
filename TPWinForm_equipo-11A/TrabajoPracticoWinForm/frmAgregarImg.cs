@@ -26,6 +26,16 @@ namespace TrabajoPracticoWinForm
             Text = "Agregar Imagen";
         }
 
+        private bool validarAlta()
+        {
+            if (string.IsNullOrEmpty(txtImage.Text))
+            {
+                MessageBox.Show("Por favor cargue una imágen");
+                return true;
+            }
+            return false;
+        }
+
         private void frmAgregarImg_Load(object sender, EventArgs e)
         {
             txtImage.Text = "";
@@ -33,6 +43,9 @@ namespace TrabajoPracticoWinForm
 
         private void btnAddImage_Click(object sender, EventArgs e)
         {
+            if (validarAlta())
+                return;
+
             ImgNegocio negocio = new ImgNegocio();
             Imagen imagen = new Imagen();
             imagen.IDArticulo = this.image.IDArticulo;

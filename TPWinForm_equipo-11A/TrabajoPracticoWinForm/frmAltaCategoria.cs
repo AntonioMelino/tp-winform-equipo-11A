@@ -29,6 +29,16 @@ namespace TrabajoPracticoWinForm
             lblAltaCategoria.Text = "Modificar Categoria";
         }
 
+        private bool validarAlta()
+        {
+            if (string.IsNullOrEmpty(txtDescripcionCategoria.Text))
+            {
+                MessageBox.Show("Por favor cargue la descripcion");
+                return true;
+            }
+            return false;
+        }
+
         private void btnCancelarCategoria_Click(object sender, EventArgs e)
         {
             Close();
@@ -40,6 +50,9 @@ namespace TrabajoPracticoWinForm
 
             try
             {
+                if (validarAlta())
+                    return;
+
                 if (categoria == null)
                     categoria = new Categoria();
 

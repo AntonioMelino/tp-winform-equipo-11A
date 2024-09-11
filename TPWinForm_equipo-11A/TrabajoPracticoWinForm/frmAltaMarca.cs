@@ -28,6 +28,16 @@ namespace TrabajoPracticoWinForm
             lblAltaMarca.Text = "Modificar Marca";
         }
 
+        private bool validarAlta()
+        {
+            if (string.IsNullOrEmpty(txtDescripcionMarca.Text))
+            {
+                MessageBox.Show("Por favor cargue la descripcion");
+                return true;
+            }
+            return false;
+        }
+
         private void btnCancelarMarca_Click(object sender, EventArgs e)
         {
             Close();
@@ -39,6 +49,10 @@ namespace TrabajoPracticoWinForm
 
             try
             {
+
+                if (validarAlta())
+                    return;
+
                 if (marca == null)
                     marca = new Marca();
 

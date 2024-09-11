@@ -30,6 +30,36 @@ namespace TrabajoPracticoWinForm
             lblTituloAlta.Text = "Modificar Articulo";
         }
 
+        private bool validarAlta()
+        {
+            if (string.IsNullOrEmpty(txtCodigoArticulo.Text))
+            {
+                MessageBox.Show("Por favor cargue el código");
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtNombreArticulo.Text))
+            {
+                MessageBox.Show("Por favor cargue el nombre");
+                return true;
+            }
+            if(string.IsNullOrEmpty(txtDescripcionArticulo.Text))
+            {
+                txtDescripcionArticulo.Text = "Sin descripcion";
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtPrecioArticulo.Text))
+            {
+                MessageBox.Show("Por favor cargue el precio");
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtImagenUrl.Text))
+            {
+                txtImagenUrl.Text = "Sin imagen";
+                pbxArticuloAlta.Load("https://t4.ftcdn.net/jpg/05/17/53/57/360_F_517535712_q7f9QC9X6TQxWi6xYZZbMmw5cnLMr279.jpg");
+            }
+            return false;
+        }
+
         private void btnCancelarArticulo_Click(object sender, EventArgs e)
         {
             Close();
@@ -41,8 +71,12 @@ namespace TrabajoPracticoWinForm
             ArticuloNegocio negocio = new ArticuloNegocio();
 
             try
-            {   
-                if(articulo == null)
+            {
+
+                if (validarAlta())
+                    return;
+
+                if (articulo == null)
                     articulo = new Articulo();
                 
                 articulo.Codigo = txtCodigoArticulo.Text;
