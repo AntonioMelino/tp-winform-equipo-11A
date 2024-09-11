@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace TrabajoPracticoWinForm
 {
-    //private List<Marca> marcas;
+    //private List<Marca> listaMarcas;
     public partial class frmMarcas : Form
     {
         public frmMarcas()
@@ -77,6 +77,11 @@ namespace TrabajoPracticoWinForm
         private void btnVolverMarca_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void txtFiltroMarcas_TextChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

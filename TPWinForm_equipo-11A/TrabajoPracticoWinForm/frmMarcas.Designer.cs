@@ -34,6 +34,8 @@
             this.btnModificarMarca = new System.Windows.Forms.Button();
             this.btnEliminarMarca = new System.Windows.Forms.Button();
             this.btnVolverMarca = new System.Windows.Forms.Button();
+            this.lblFiltroMarcas = new System.Windows.Forms.Label();
+            this.txtFiltroMarcas = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMarcas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,7 +53,7 @@
             // 
             this.dgvMarcas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMarcas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvMarcas.Location = new System.Drawing.Point(49, 80);
+            this.dgvMarcas.Location = new System.Drawing.Point(49, 107);
             this.dgvMarcas.Name = "dgvMarcas";
             this.dgvMarcas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMarcas.Size = new System.Drawing.Size(247, 230);
@@ -98,11 +100,30 @@
             this.btnVolverMarca.UseVisualStyleBackColor = true;
             this.btnVolverMarca.Click += new System.EventHandler(this.btnVolverMarca_Click);
             // 
+            // lblFiltroMarcas
+            // 
+            this.lblFiltroMarcas.AutoSize = true;
+            this.lblFiltroMarcas.Location = new System.Drawing.Point(46, 81);
+            this.lblFiltroMarcas.Name = "lblFiltroMarcas";
+            this.lblFiltroMarcas.Size = new System.Drawing.Size(64, 13);
+            this.lblFiltroMarcas.TabIndex = 6;
+            this.lblFiltroMarcas.Text = "Filtro rápido:";
+            // 
+            // txtFiltroMarcas
+            // 
+            this.txtFiltroMarcas.Location = new System.Drawing.Point(116, 81);
+            this.txtFiltroMarcas.Name = "txtFiltroMarcas";
+            this.txtFiltroMarcas.Size = new System.Drawing.Size(177, 20);
+            this.txtFiltroMarcas.TabIndex = 7;
+            //this.txtFiltroMarcas.TextChanged += new System.EventHandler(this.txtFiltroMarcas_TextChanged);
+            // 
             // frmMarcas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtFiltroMarcas);
+            this.Controls.Add(this.lblFiltroMarcas);
             this.Controls.Add(this.btnVolverMarca);
             this.Controls.Add(this.btnEliminarMarca);
             this.Controls.Add(this.btnModificarMarca);
@@ -128,5 +149,7 @@
         private System.Windows.Forms.Button btnModificarMarca;
         private System.Windows.Forms.Button btnEliminarMarca;
         private System.Windows.Forms.Button btnVolverMarca;
+        private System.Windows.Forms.Label lblFiltroMarcas;
+        private System.Windows.Forms.TextBox txtFiltroMarcas;
     }
 }

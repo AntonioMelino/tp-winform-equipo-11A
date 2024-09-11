@@ -45,6 +45,7 @@
             this.btnIrCategorias = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnMostrarDetalleArticulo = new System.Windows.Forms.Button();
+            this.btnRestablecerBusquedaArticulo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
             this.SuspendLayout();
@@ -167,9 +168,9 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(611, 572);
+            this.btnBuscar.Location = new System.Drawing.Point(556, 575);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(166, 35);
+            this.btnBuscar.Size = new System.Drawing.Size(89, 35);
             this.btnBuscar.TabIndex = 6;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
@@ -215,11 +216,22 @@
             this.btnMostrarDetalleArticulo.UseVisualStyleBackColor = true;
             this.btnMostrarDetalleArticulo.Click += new System.EventHandler(this.btnMostrarDetalleArticulo_Click);
             // 
+            // btnRestablecerBusquedaArticulo
+            // 
+            this.btnRestablecerBusquedaArticulo.Location = new System.Drawing.Point(651, 575);
+            this.btnRestablecerBusquedaArticulo.Name = "btnRestablecerBusquedaArticulo";
+            this.btnRestablecerBusquedaArticulo.Size = new System.Drawing.Size(126, 35);
+            this.btnRestablecerBusquedaArticulo.TabIndex = 31;
+            this.btnRestablecerBusquedaArticulo.Text = "Restablecer búsqueda";
+            this.btnRestablecerBusquedaArticulo.UseVisualStyleBackColor = true;
+            this.btnRestablecerBusquedaArticulo.Click += new System.EventHandler(this.btnRestablecerBusquedaArticulo_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1058, 627);
+            this.Controls.Add(this.btnRestablecerBusquedaArticulo);
             this.Controls.Add(this.btnMostrarDetalleArticulo);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnIrCategorias);
@@ -268,6 +280,7 @@
         private System.Windows.Forms.Button btnIrCategorias;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnMostrarDetalleArticulo;
+        private System.Windows.Forms.Button btnRestablecerBusquedaArticulo;
     }
 }
 

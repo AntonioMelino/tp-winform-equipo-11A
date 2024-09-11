@@ -90,6 +90,7 @@ namespace TrabajoPracticoWinForm
             dgvArticulos.DataSource = listaArticulo;
             //dgvArticulos.Columns["Id"].Visible = false;
             dgvArticulos.Columns["Imagen"].Visible = false;
+            dgvArticulos.Columns["Descripcion"].Visible = false;
             //pbxArticulo.Load(listaArticulo[0].Imagen.ImagenUrl);
             //cargarImagen(listaArticulo[0].Imagen.ImagenUrl);
             //pbxArticulo.Load();
@@ -176,12 +177,36 @@ namespace TrabajoPracticoWinForm
             }
         }
 
+        private bool validarBuscar()
+        {
+            if(cboCampo.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor seleccione el campo para buscar");
+                return true;
+            }
+            if(cboCriterio.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor seleccione el criterio para buscar");
+                return true;
+            }
+            if(string.IsNullOrEmpty(txtFiltro.Text))
+            {
+                MessageBox.Show("Por favor cargue el filtro");
+                return true;
+            }
+
+            return false;
+        }
+
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
 
             try
             {
+                if (validarBuscar())
+                    return;
+
                 string campo = cboCampo.SelectedItem.ToString();
                 string criterio = cboCriterio.SelectedItem?.ToString();  // Criterio puede ser nulo para algunos casos como Precio
                 string filtro = txtFiltro.Text;
@@ -272,6 +297,11 @@ namespace TrabajoPracticoWinForm
                 VD.pbImagen.Load("https://t4.ftcdn.net/jpg/05/17/53/57/360_F_517535712_q7f9QC9X6TQxWi6xYZZbMmw5cnLMr279.jpg");
                 VD.ShowDialog();
             }
+        }
+
+        private void btnRestablecerBusquedaArticulo_Click(object sender, EventArgs e)
+        {
+            cargar();
         }
     }
 }
