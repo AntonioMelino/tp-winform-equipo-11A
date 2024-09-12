@@ -285,7 +285,7 @@ namespace TrabajoPracticoWinForm
         {
             frmVerDetalle VD = new frmVerDetalle();
             try
-            {   
+            {
                 Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
                 VD.txtCodigo.Text = seleccionado.Codigo;
                 VD.txtNombre.Text = seleccionado.Nombre.ToString();
@@ -294,10 +294,17 @@ namespace TrabajoPracticoWinForm
                 VD.txtCategoria.Text = seleccionado.Categoria.ToString();
                 VD.txtPrecio.Text = seleccionado.Precio.ToString("F2");
 
-                if (seleccionado.Imagen.ImagenUrl != "")
+                ImgNegocio imgNegocio = new ImgNegocio();
+                List<Imagen> imagenes = imgNegocio.listar_x_id(seleccionado.ID);
+                VD.cboImagenes.DataSource = imagenes;
+                VD.cboImagenes.DisplayMember = "ImagenUrl";
+                VD.cboImagenes.ValueMember = "ID";
+
+                if (imagenes.Count > 0)
                 {
-                    VD.pbImagen.Load(seleccionado.Imagen.ImagenUrl);
+                    VD.pbImagen.Load(imagenes[0].ImagenUrl);
                 }
+
                 VD.ShowDialog();
                 cargar();
             }
@@ -318,8 +325,8 @@ namespace TrabajoPracticoWinForm
         {
             frmVerDetalle VD = new frmVerDetalle();
             try
-            {   
-                if(dgvArticulos.CurrentRow != null)
+            {
+                if (dgvArticulos.CurrentRow != null)
                 {
                     Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
                     VD.txtCodigo.Text = seleccionado.Codigo;
@@ -329,10 +336,17 @@ namespace TrabajoPracticoWinForm
                     VD.txtCategoria.Text = seleccionado.Categoria.ToString();
                     VD.txtPrecio.Text = seleccionado.Precio.ToString("F2");
 
-                    if (seleccionado.Imagen.ImagenUrl != "")
+                    ImgNegocio imgNegocio = new ImgNegocio();
+                    List<Imagen> imagenes = imgNegocio.listar_x_id(seleccionado.ID);
+                    VD.cboImagenes.DataSource = imagenes;
+                    VD.cboImagenes.DisplayMember = "ImagenUrl";
+                    VD.cboImagenes.ValueMember = "ID";
+
+                    if (imagenes.Count > 0)
                     {
-                        VD.pbImagen.Load(seleccionado.Imagen.ImagenUrl);
+                        VD.pbImagen.Load(imagenes[0].ImagenUrl);
                     }
+
                     VD.ShowDialog();
                     cargar();
                 }
@@ -363,7 +377,8 @@ namespace TrabajoPracticoWinForm
                 VD.pbImagen.Load("https://t4.ftcdn.net/jpg/05/17/53/57/360_F_517535712_q7f9QC9X6TQxWi6xYZZbMmw5cnLMr279.jpg");
                 VD.ShowDialog();
             }
-        }
+        }      
+
 
         private void btnRestablecerBusquedaArticulo_Click(object sender, EventArgs e)
         {
