@@ -26,7 +26,7 @@ namespace TrabajoPracticoWinForm
 
         private void frmVerDetalle_Load(object sender, EventArgs e)
         {
-
+            cboImagenes.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void cboImagenes_SelectedIndexChanged(object sender, EventArgs e)

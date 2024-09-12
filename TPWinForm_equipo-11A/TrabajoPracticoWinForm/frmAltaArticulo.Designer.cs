@@ -49,6 +49,7 @@
             this.lblImagenes = new System.Windows.Forms.Label();
             this.cboImagenes = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnNuevaImg = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticuloAlta)).BeginInit();
             this.SuspendLayout();
             // 
@@ -116,8 +117,8 @@
             this.txtPrecioArticulo.Name = "txtPrecioArticulo";
             this.txtPrecioArticulo.Size = new System.Drawing.Size(164, 20);
             this.txtPrecioArticulo.TabIndex = 5;
-            this.txtPrecioArticulo.Text = "0,00";
             this.txtPrecioArticulo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioArticulo_KeyPress);
+            this.txtPrecioArticulo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.txtPrecioArticulo_MouseMove);
             // 
             // btnAceptarArticulo
             // 
@@ -198,7 +199,7 @@
             this.txtImagenUrl.Name = "txtImagenUrl";
             this.txtImagenUrl.Size = new System.Drawing.Size(164, 20);
             this.txtImagenUrl.TabIndex = 6;
-            this.txtImagenUrl.TextChanged += new System.EventHandler(this.txtImagenUrl_TextChanged);
+            this.txtImagenUrl.Leave += new System.EventHandler(this.txtImagenUrl_Leave);
             // 
             // pbxArticuloAlta
             // 
@@ -238,11 +239,22 @@
             this.label2.TabIndex = 20;
             this.label2.Text = "* Campo requerido";
             // 
+            // btnNuevaImg
+            // 
+            this.btnNuevaImg.Location = new System.Drawing.Point(413, 324);
+            this.btnNuevaImg.Name = "btnNuevaImg";
+            this.btnNuevaImg.Size = new System.Drawing.Size(107, 23);
+            this.btnNuevaImg.TabIndex = 21;
+            this.btnNuevaImg.Text = "Nueva Imagen";
+            this.btnNuevaImg.UseVisualStyleBackColor = true;
+            this.btnNuevaImg.Click += new System.EventHandler(this.btnNuevaImg_Click);
+            // 
             // frmAltaArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(647, 375);
+            this.Controls.Add(this.btnNuevaImg);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cboImagenes);
             this.Controls.Add(this.lblImagenes);
@@ -299,5 +311,6 @@
         private System.Windows.Forms.Label lblImagenes;
         private System.Windows.Forms.ComboBox cboImagenes;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnNuevaImg;
     }
 }

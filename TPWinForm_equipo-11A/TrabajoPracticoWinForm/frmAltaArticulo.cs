@@ -150,6 +150,7 @@ namespace TrabajoPracticoWinForm
                 cboImagenes.Visible = false;      
                 cboCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
                 cboMarca.DropDownStyle = ComboBoxStyle.DropDownList;
+                btnNuevaImg.Visible = false;
                 if (articulo != null)
                 {   
                     cboImagenes.DataSource = imgnegocio.listar_x_id(articulo.ID);
@@ -168,9 +169,10 @@ namespace TrabajoPracticoWinForm
                     cboImagenes.SelectedValue = articulo.Imagen.ID;
                     cboMarca.SelectedValue = articulo.Marca.ID;
                     cboCategoria.SelectedValue = articulo.Categoria.ID;
+                    btnNuevaImg.Visible = true;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                  throw;
@@ -191,20 +193,46 @@ namespace TrabajoPracticoWinForm
         }
         private void cboImagenes_SelectedValueChanged(object sender, EventArgs e)
         {
-            //articulo.Imagen = (Imagen)cboImagenes.SelectedItem;
-            //pbxArticuloAlta.Load(articulo.Imagen.ImagenUrl);
-            
-            // ESTO SUCEDE EN LA SELECCIONA DE IMAGENES (MODIFICAR)
-            //CAMBIA LA FOTO PERO SI ES CORRUPTA O NO ES UNA FOTO COMO TAL, PINCHA
+            try
+            {
+                articulo.Imagen = (Imagen)cboImagenes.SelectedItem;
+                pbxArticuloAlta.Load(articulo.Imagen.ImagenUrl);
 
+            }
+            catch (Exception ex)
+            {
+
+                pbxArticuloAlta.Load("https://t4.ftcdn.net/jpg/05/17/53/57/360_F_517535712_q7f9QC9X6TQxWi6xYZZbMmw5cnLMr279.jpg");
+            }
         }
 
-        private void txtImagenUrl_TextChanged(object sender, EventArgs e)
+        private void txtPrecioArticulo_MouseMove(object sender, MouseEventArgs e)
         {
-            //pbxArticuloAlta.Load(txtImagenUrl.Text);
-            
-            //MUESTRA LA FOTO PERO SI ES CORRUPTA O NO ES UNA FOTO COMO TAL, PINCHA
-            // ESTO SUCEDE EN EL ALTA
+            txtPrecioArticulo.Text = "0,00";
+        }
+
+        private void txtImagenUrl_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                pbxArticuloAlta.Load(txtImagenUrl.Text);
+            }
+            catch (Exception ex)
+            {
+
+                pbxArticuloAlta.Load("https://t4.ftcdn.net/jpg/05/17/53/57/360_F_517535712_q7f9QC9X6TQxWi6xYZZbMmw5cnLMr279.jpg");
+            }
+        }
+
+        private void btnNuevaImg_Click(object sender, EventArgs e)
+        {
+            Imagen img = new Imagen();
+            ImgNegocio imgNegocio = new ImgNegocio();
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            img.IDArticulo = articulo.ID;
+            frmAgregarImg form = new frmAgregarImg(img);
+            form.ShowDialog();
+            Close();
         }
     }
 }
