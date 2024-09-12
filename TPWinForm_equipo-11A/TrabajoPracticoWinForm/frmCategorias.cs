@@ -34,6 +34,7 @@ namespace TrabajoPracticoWinForm
         private void btnAgregarCategoria_Click(object sender, EventArgs e)
         {
             frmAltaCategoria alta = new frmAltaCategoria();
+            txtFiltroCat.Text = ("");
             alta.ShowDialog();
             cargar();
         }
@@ -45,12 +46,34 @@ namespace TrabajoPracticoWinForm
 
         private void btnModificarCategoria_Click(object sender, EventArgs e)
         {
-            Categoria seleccionada;
-            seleccionada = (Categoria)dgvCategoria.CurrentRow.DataBoundItem;
-            frmAltaCategoria modificar = new frmAltaCategoria(seleccionada);
-            modificar.ShowDialog();
-            cargar();
-        }
+            try
+            {
+                if (dgvCategoria.CurrentRow != null)
+                {
+                    Categoria seleccionada;
+                    seleccionada = (Categoria)dgvCategoria.CurrentRow.DataBoundItem;
+                    frmAltaCategoria modificar = new frmAltaCategoria(seleccionada);
+                    modificar.ShowDialog();
+                    txtFiltroCat.Text = ("");
+                    cargar();
+                }
+                else
+                {
+                    MessageBox.Show("Error en la selección del artículo");
+                    txtFiltroCat.Text = ("");
+                    cargar();
+                }
+            }
+            //Categoria seleccionada;
+            //seleccionada = (Categoria)dgvCategoria.CurrentRow.DataBoundItem;
+            //frmAltaCategoria modificar = new frmAltaCategoria(seleccionada);
+            //modificar.ShowDialog();
+            //cargar();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+         }
 
         private void btnEliminarCategoria_Click(object sender, EventArgs e)
         {
@@ -59,15 +82,31 @@ namespace TrabajoPracticoWinForm
 
             try
             {
-                DialogResult respuesta = MessageBox.Show("Se eliminara permanentemente de nuestra base de datos, ¿Estás seguro?", "Eliminar CAtegoria", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (respuesta == DialogResult.Yes)
+                if (dgvCategoria.CurrentRow != null)
                 {
-                    seleccionada = (Categoria)dgvCategoria.CurrentRow.DataBoundItem;
-                    negocio.eliminarF(seleccionada.ID);
+                    DialogResult respuesta = MessageBox.Show("Se eliminara permanentemente de nuestra base de datos, ¿Estás seguro?", "Eliminar CAtegoria", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (respuesta == DialogResult.Yes)
+                    {
+                        seleccionada = (Categoria)dgvCategoria.CurrentRow.DataBoundItem;
+                        negocio.eliminarF(seleccionada.ID);
+                        txtFiltroCat.Text = ("");
+                        cargar();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Error en la selección del artículo");
+                    txtFiltroCat.Text = ("");
                     cargar();
                 }
-
             }
+            //DialogResult respuesta = MessageBox.Show("Se eliminara permanentemente de nuestra base de datos, ¿Estás seguro?", "Eliminar CAtegoria", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            //if (respuesta == DialogResult.Yes)
+            //{
+            //    seleccionada = (Categoria)dgvCategoria.CurrentRow.DataBoundItem;
+            //    negocio.eliminarF(seleccionada.ID);
+            //    cargar();
+            //}
             catch (Exception ex)
             {
 

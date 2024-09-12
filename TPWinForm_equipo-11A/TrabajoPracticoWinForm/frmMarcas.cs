@@ -35,6 +35,7 @@ namespace TrabajoPracticoWinForm
         private void btnAgregarMarca_Click(object sender, EventArgs e)
         {
             frmAltaMarca alta = new frmAltaMarca();
+            txtFiltroMarcas.Text = ("");
             alta.ShowDialog();
             cargar();
         }
@@ -46,11 +47,33 @@ namespace TrabajoPracticoWinForm
 
         private void btnModificarMarca_Click(object sender, EventArgs e)
         {
-            Marca seleccionada;
-            seleccionada = (Marca)dgvMarcas.CurrentRow.DataBoundItem;
-            frmAltaMarca modificar = new frmAltaMarca(seleccionada);
-            modificar.ShowDialog();
-            cargar();
+            try
+            {
+                if (dgvMarcas.CurrentRow != null)
+                {
+                    Marca seleccionada;
+                    seleccionada = (Marca)dgvMarcas.CurrentRow.DataBoundItem;
+                    frmAltaMarca modificar = new frmAltaMarca(seleccionada);
+                    modificar.ShowDialog();
+                    txtFiltroMarcas.Text = ("");
+                    cargar();
+                }
+                else
+                {
+                    MessageBox.Show("Error en la selección del artículo");
+                    txtFiltroMarcas.Text = ("");
+                    cargar();
+                }
+            }
+            //Marca seleccionada;
+            //seleccionada = (Marca)dgvMarcas.CurrentRow.DataBoundItem;
+            //frmAltaMarca modificar = new frmAltaMarca(seleccionada);
+            //modificar.ShowDialog();
+            //cargar();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void btnEliminarMarca_Click(object sender, EventArgs e)
@@ -59,14 +82,31 @@ namespace TrabajoPracticoWinForm
             Marca seleccionada;
 
             try
-            {
-                DialogResult respuesta = MessageBox.Show("Se eliminara permanentemente de nuestra base de datos, ¿Estás seguro?", "Eliminar Marca", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (respuesta == DialogResult.Yes)
+            {   
+                if (dgvMarcas.CurrentRow != null)
                 {
-                    seleccionada = (Marca)dgvMarcas.CurrentRow.DataBoundItem;
-                    negocio.eliminarF(seleccionada.ID);
+                    DialogResult respuesta = MessageBox.Show("Se eliminara permanentemente de nuestra base de datos, ¿Estás seguro?", "Eliminar Marca", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (respuesta == DialogResult.Yes)
+                    {
+                        seleccionada = (Marca)dgvMarcas.CurrentRow.DataBoundItem;
+                        negocio.eliminarF(seleccionada.ID);
+                        txtFiltroMarcas.Text = ("");
+                        cargar();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Error en la selección del artículo");
+                    txtFiltroMarcas.Text = ("");
                     cargar();
                 }
+                //DialogResult respuesta = MessageBox.Show("Se eliminara permanentemente de nuestra base de datos, ¿Estás seguro?", "Eliminar Marca", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                //if (respuesta == DialogResult.Yes)
+                //{
+                //    seleccionada = (Marca)dgvMarcas.CurrentRow.DataBoundItem;
+                //    negocio.eliminarF(seleccionada.ID);
+                //    cargar();
+                //}
 
             }
             catch (Exception ex)

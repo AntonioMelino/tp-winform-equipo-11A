@@ -102,6 +102,7 @@ namespace TrabajoPracticoWinForm
         private void btnAgregarArticulo_Click(object sender, EventArgs e)
         {
             frmAltaArticulo alta = new frmAltaArticulo();
+            txtFiltro.Text = ("");
             alta.ShowDialog();
             cargar();
         }
@@ -122,11 +123,13 @@ namespace TrabajoPracticoWinForm
                     seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
                     frmAltaArticulo modificar = new frmAltaArticulo(seleccionado);
                     modificar.ShowDialog();
+                    txtFiltro.Text = ("");
                     cargar();
                 }
                 else
                 {
                     MessageBox.Show("Error en la selección del artículo");
+                    txtFiltro.Text = ("");
                     cargar();
                 }
 
@@ -156,12 +159,14 @@ namespace TrabajoPracticoWinForm
                     {
                         seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
                         negocio.eliminar(seleccionado.ID);
+                        txtFiltro.Text = ("");
                         cargar();
                     }
                 }
                 else
                 {
                     MessageBox.Show("Error en la selección del artículo");
+                    txtFiltro.Text = ("");
                     cargar();
                 }
 

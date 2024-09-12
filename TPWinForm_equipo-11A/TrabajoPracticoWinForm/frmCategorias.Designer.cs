@@ -113,9 +113,9 @@
             this.lblFiltroCat.AutoSize = true;
             this.lblFiltroCat.Location = new System.Drawing.Point(39, 81);
             this.lblFiltroCat.Name = "lblFiltroCat";
-            this.lblFiltroCat.Size = new System.Drawing.Size(115, 13);
+            this.lblFiltroCat.Size = new System.Drawing.Size(112, 13);
             this.lblFiltroCat.TabIndex = 9;
-            this.lblFiltroCat.Text = "Filtrar por Descripción::";
+            this.lblFiltroCat.Text = "Filtrar por Descripción:";
             // 
             // frmCategorias
             // 
