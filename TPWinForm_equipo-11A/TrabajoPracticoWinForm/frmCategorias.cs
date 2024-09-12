@@ -79,11 +79,12 @@ namespace TrabajoPracticoWinForm
         {
             Close();
         }
+ 
 
-        private void btnBuscarCat_Click(object sender, EventArgs e)
+        private void txtFiltroCat_TextChanged(object sender, EventArgs e)
         {
             List<Categoria> listaFiltrada;
-            string filtro = txtFiltroCat.Text.ToLower(); 
+            string filtro = txtFiltroCat.Text.ToLower();
 
             if (filtro.Length >= 3)
             {
@@ -101,11 +102,6 @@ namespace TrabajoPracticoWinForm
             {
                 MessageBox.Show("No se encontraron categorías con el filtro ingresado.", "Buscar", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-        }
-
-        private void btnRefrescarCat_Click(object sender, EventArgs e)
-        {
-            cargar();
         }
     }
 }

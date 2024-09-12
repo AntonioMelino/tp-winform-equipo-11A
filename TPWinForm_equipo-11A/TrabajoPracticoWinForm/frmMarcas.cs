@@ -83,11 +83,6 @@ namespace TrabajoPracticoWinForm
 
         private void txtFiltroMarcas_TextChanged(object sender, EventArgs e)
         {
-            
-        }
-
-        private void btnBuscarMarcas_Click(object sender, EventArgs e)
-        {
             List<Marca> listaFiltrada;
             string filtro = txtFiltroMarcas.Text.ToLower();
 
@@ -97,21 +92,12 @@ namespace TrabajoPracticoWinForm
             }
             else
             {
-                listaFiltrada = listaMarca; 
+                listaFiltrada = listaMarca;
             }
 
             dgvMarcas.DataSource = null;
             dgvMarcas.DataSource = listaFiltrada;
 
-            if (listaFiltrada.Count == 0)
-            {
-                MessageBox.Show("No se encontraron marcas con el filtro ingresado.", "Buscar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        private void btnRefrescarMarca_Click(object sender, EventArgs e)
-        {
-            cargar();
         }
     }
 }
