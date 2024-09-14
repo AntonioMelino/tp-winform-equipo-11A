@@ -78,8 +78,8 @@ namespace TrabajoPracticoWinForm
 
                 if (articulo == null)
                     articulo = new Articulo();
-                
-                articulo.Codigo = txtCodigoArticulo.Text;
+
+                articulo.Codigo = txtCodigoArticulo.Text.ToUpper();
                 articulo.Nombre = txtNombreArticulo.Text;
                 articulo.Descripcion = txtDescripcionArticulo.Text;
                 articulo.Marca = (Marca)cboMarca.SelectedItem;
@@ -158,6 +158,7 @@ namespace TrabajoPracticoWinForm
                     cboImagenes.DisplayMember = "ImagenUrl";
                     cboImagenes.DropDownStyle = ComboBoxStyle.DropDownList;
                     txtImagenUrl.Enabled = false;
+                    txtCodigoArticulo.Enabled = false;
                     lblImagenes.Visible= true;
                     cboImagenes.Visible = true;   
                     txtCodigoArticulo.Text = articulo.Codigo;
@@ -208,7 +209,10 @@ namespace TrabajoPracticoWinForm
 
         private void txtPrecioArticulo_MouseMove(object sender, MouseEventArgs e)
         {
-            txtPrecioArticulo.Text = "0,00";
+            if(articulo == null)
+            {
+                txtPrecioArticulo.Text = "0,00";
+            }   
         }
 
         private void txtImagenUrl_Leave(object sender, EventArgs e)
@@ -226,13 +230,26 @@ namespace TrabajoPracticoWinForm
 
         private void btnNuevaImg_Click(object sender, EventArgs e)
         {
-            Imagen img = new Imagen();
-            ImgNegocio imgNegocio = new ImgNegocio();
             ArticuloNegocio negocio = new ArticuloNegocio();
-            img.IDArticulo = articulo.ID;
-            frmAgregarImg form = new frmAgregarImg(img);
+            
+            articulo.Imagen.IDArticulo = articulo.ID;
+            frmAgregarImg form = new frmAgregarImg(articulo.Imagen);
             form.ShowDialog();
-            Close();
+            ImgNegocio imgnegocio = new ImgNegocio();
+            cboImagenes.DataSource = imgnegocio.listar_x_id(articulo.ID);
+        }
+
+        private void txtCodigoArticulo_TextChanged(object sender, EventArgs e)
+        {
+            if(articulo == null)
+            {
+                ArticuloNegocio negocio = new ArticuloNegocio();
+                if (negocio.existe(txtCodigoArticulo.Text))
+                {
+                    MessageBox.Show("Ya existe codigo");
+                    txtCodigoArticulo.Text = "";
+                }
+            }
         }
     }
 }

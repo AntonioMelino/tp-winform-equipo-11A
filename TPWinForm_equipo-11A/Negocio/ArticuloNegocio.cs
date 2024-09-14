@@ -228,6 +228,28 @@ namespace TrabajoPracticoWinForm
             }
         }
 
+        public bool existe(string codigo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("SELECT COUNT(ID) as ID FROM ARTICULOS WHERE Codigo = @codigo");
+                datos.setearParametro("@codigo", codigo);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    int cont = Convert.ToInt32(datos.Lector["ID"]);
+                    if(cont == 1) return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
         //public void agregarImg(Articulo nuevo)
         //{
         //    AccesoDatos datos = new AccesoDatos();

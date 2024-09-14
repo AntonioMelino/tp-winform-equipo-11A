@@ -93,6 +93,7 @@
             this.txtCodigoArticulo.Name = "txtCodigoArticulo";
             this.txtCodigoArticulo.Size = new System.Drawing.Size(164, 20);
             this.txtCodigoArticulo.TabIndex = 0;
+            this.txtCodigoArticulo.TextChanged += new System.EventHandler(this.txtCodigoArticulo_TextChanged);
             // 
             // txtDescripcionArticulo
             // 
@@ -105,7 +106,7 @@
             // lblPrecioArticulo
             // 
             this.lblPrecioArticulo.AutoSize = true;
-            this.lblPrecioArticulo.Location = new System.Drawing.Point(31, 236);
+            this.lblPrecioArticulo.Location = new System.Drawing.Point(30, 291);
             this.lblPrecioArticulo.Name = "lblPrecioArticulo";
             this.lblPrecioArticulo.Size = new System.Drawing.Size(47, 13);
             this.lblPrecioArticulo.TabIndex = 10;
@@ -113,10 +114,10 @@
             // 
             // txtPrecioArticulo
             // 
-            this.txtPrecioArticulo.Location = new System.Drawing.Point(77, 233);
+            this.txtPrecioArticulo.Location = new System.Drawing.Point(78, 288);
             this.txtPrecioArticulo.Name = "txtPrecioArticulo";
             this.txtPrecioArticulo.Size = new System.Drawing.Size(164, 20);
-            this.txtPrecioArticulo.TabIndex = 5;
+            this.txtPrecioArticulo.TabIndex = 7;
             this.txtPrecioArticulo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioArticulo_KeyPress);
             this.txtPrecioArticulo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.txtPrecioArticulo_MouseMove);
             // 
@@ -187,7 +188,7 @@
             // lblImagen
             // 
             this.lblImagen.AutoSize = true;
-            this.lblImagen.Location = new System.Drawing.Point(13, 265);
+            this.lblImagen.Location = new System.Drawing.Point(13, 238);
             this.lblImagen.Name = "lblImagen";
             this.lblImagen.Size = new System.Drawing.Size(58, 13);
             this.lblImagen.TabIndex = 15;
@@ -195,10 +196,10 @@
             // 
             // txtImagenUrl
             // 
-            this.txtImagenUrl.Location = new System.Drawing.Point(77, 262);
+            this.txtImagenUrl.Location = new System.Drawing.Point(78, 235);
             this.txtImagenUrl.Name = "txtImagenUrl";
             this.txtImagenUrl.Size = new System.Drawing.Size(164, 20);
-            this.txtImagenUrl.TabIndex = 6;
+            this.txtImagenUrl.TabIndex = 5;
             this.txtImagenUrl.Leave += new System.EventHandler(this.txtImagenUrl_Leave);
             // 
             // pbxArticuloAlta
@@ -213,7 +214,7 @@
             // lblImagenes
             // 
             this.lblImagenes.AutoSize = true;
-            this.lblImagenes.Location = new System.Drawing.Point(15, 290);
+            this.lblImagenes.Location = new System.Drawing.Point(15, 264);
             this.lblImagenes.Name = "lblImagenes";
             this.lblImagenes.Size = new System.Drawing.Size(56, 13);
             this.lblImagenes.TabIndex = 18;
@@ -222,10 +223,10 @@
             // cboImagenes
             // 
             this.cboImagenes.FormattingEnabled = true;
-            this.cboImagenes.Location = new System.Drawing.Point(77, 288);
+            this.cboImagenes.Location = new System.Drawing.Point(78, 261);
             this.cboImagenes.Name = "cboImagenes";
             this.cboImagenes.Size = new System.Drawing.Size(164, 21);
-            this.cboImagenes.TabIndex = 7;
+            this.cboImagenes.TabIndex = 6;
             this.cboImagenes.SelectionChangeCommitted += new System.EventHandler(this.cboImagenes_SelectionChangeCommitted);
             this.cboImagenes.SelectedValueChanged += new System.EventHandler(this.cboImagenes_SelectedValueChanged);
             // 
