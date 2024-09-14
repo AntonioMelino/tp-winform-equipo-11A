@@ -33,7 +33,7 @@ namespace TrabajoPracticoWinForm
         private bool validarAlta()
         {
             if (string.IsNullOrEmpty(txtCodigoArticulo.Text))
-            {
+            { 
                 MessageBox.Show("Por favor cargue el código");
                 return true;
             }
@@ -54,8 +54,11 @@ namespace TrabajoPracticoWinForm
             }
             if (string.IsNullOrEmpty(txtImagenUrl.Text))
             {
+                if(articulo==null)
+                {
                 txtImagenUrl.Text = "Sin imagen";
                 pbxArticuloAlta.Load("https://t4.ftcdn.net/jpg/05/17/53/57/360_F_517535712_q7f9QC9X6TQxWi6xYZZbMmw5cnLMr279.jpg");
+                }
             }
             return false;
         }
@@ -89,9 +92,12 @@ namespace TrabajoPracticoWinForm
                     ImgNegocio imgNegocio = new ImgNegocio();
                     if(cboImagenes.SelectedIndex != -1)
                     {  
-                        articulo.Imagen = (Imagen)cboImagenes.SelectedItem;                       
-                        articulo.Imagen.ImagenUrl = txtImagenUrl.Text; 
-                        imgNegocio.modificar(articulo.Imagen);
+                        articulo.Imagen = (Imagen)cboImagenes.SelectedItem;
+                        if (txtImagenUrl.Text != "")
+                        {
+                            articulo.Imagen.ImagenUrl = txtImagenUrl.Text;
+                            imgNegocio.modificar(articulo.Imagen);
+                        }                       
                     }
                     negocio.modificar(articulo);
                     MessageBox.Show("Modificado exitosamente");
@@ -228,7 +234,12 @@ namespace TrabajoPracticoWinForm
 
         private void txtCodigoArticulo_TextChanged(object sender, EventArgs e)
         {
-            if(articulo == null)
+            
+        }
+
+        private void txtCodigoArticulo_Leave(object sender, EventArgs e)
+        {
+            if (articulo == null)
             {
                 ArticuloNegocio negocio = new ArticuloNegocio();
                 if (negocio.existe(txtCodigoArticulo.Text))

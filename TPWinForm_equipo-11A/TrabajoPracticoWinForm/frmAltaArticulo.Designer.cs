@@ -94,6 +94,7 @@
             this.txtCodigoArticulo.Size = new System.Drawing.Size(164, 20);
             this.txtCodigoArticulo.TabIndex = 0;
             this.txtCodigoArticulo.TextChanged += new System.EventHandler(this.txtCodigoArticulo_TextChanged);
+            this.txtCodigoArticulo.Leave += new System.EventHandler(this.txtCodigoArticulo_Leave);
             // 
             // txtDescripcionArticulo
             // 
