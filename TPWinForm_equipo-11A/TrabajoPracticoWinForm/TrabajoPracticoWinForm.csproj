@@ -94,6 +94,7 @@
     <Compile Include="frmVerDetalle.Designer.cs">
       <DependentUpon>frmVerDetalle.cs</DependentUpon>
     </Compile>
+    <Compile Include="MarcaNegocio.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

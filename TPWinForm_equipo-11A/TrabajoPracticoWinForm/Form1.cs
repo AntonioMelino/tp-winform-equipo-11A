@@ -14,7 +14,6 @@ namespace TrabajoPracticoWinForm
 {
     public partial class Form1 : Form
     {
-        //private List<Articulo> lista;
 
         private List<Articulo> listaArticulo;
 
@@ -26,26 +25,11 @@ namespace TrabajoPracticoWinForm
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //ArticuloNegocio negocio = new ArticuloNegocio();
-            //listaArticulo = negocio.listar();
-
-            //dgvArticulos.DataSource = listaArticulo;
-
-            //pbxArticulo.Load(listaArticulo[0].Imagen.ImagenUrl);
-            ////cargarImagen(listaArticulo[0].Imagen.ImagenUrl);
-
-            ////lista = negocio.listar();
-            ////dgvArticulos.DataSource = lista;
-
-            //MarcaNegocio negocioMarca = new MarcaNegocio();
-            //listaMarca = negocioMarca.listar();
-            //dvgMarcas.DataSource = listaMarca;
 
             cargar();
 
             cboCampo.Items.Add("Codigo");
             cboCampo.Items.Add("Nombre");
-            cboCampo.Items.Add("Descripcion");
             cboCampo.Items.Add("Precio");
             cboCampo.Items.Add("Marca");
             cboCampo.Items.Add("Categoria");
@@ -65,15 +49,8 @@ namespace TrabajoPracticoWinForm
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
             Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-            //pbxArticulo.Load(seleccionado.Imagen.ImagenUrl);
-            //cargarImagen(seleccionado.Imagen.ImagenUrl);
-            //ImgNegocio imgNegocio = new ImgNegocio();
-            //seleccionado.Imagen = new Imagen();
             try
             {
-                //int id = imgNegocio.traerPrimerId(seleccionado.ID);
-                //seleccionado.Imagen = imgNegocio.traerImg(seleccionado.ID);
-                //pbxArticulo.Load(seleccionado.Imagen.ToString());
                 pbxArticulo.Load(seleccionado.Imagen.ImagenUrl);
             }
             catch (Exception ex)
@@ -88,15 +65,9 @@ namespace TrabajoPracticoWinForm
             ArticuloNegocio negocio = new ArticuloNegocio();
             listaArticulo = negocio.listar();
             dgvArticulos.DataSource = listaArticulo;
-            //dgvArticulos.Columns["Id"].Visible = false;
             dgvArticulos.Columns["Imagen"].Visible = false;
             dgvArticulos.Columns["Descripcion"].Visible = false;
-            //pbxArticulo.Load(listaArticulo[0].Imagen.ImagenUrl);
-            //cargarImagen(listaArticulo[0].Imagen.ImagenUrl);
-            //pbxArticulo.Load();
-            //MarcaNegocio negocioMarca = new MarcaNegocio();
-            //listaMarca = negocioMarca.listar();
-            //dvgMarcas.DataSource = listaMarca;
+
         }
 
         private void btnAgregarArticulo_Click(object sender, EventArgs e)
@@ -118,7 +89,6 @@ namespace TrabajoPracticoWinForm
             {
                 if (dgvArticulos.CurrentRow != null)
                 {
-                    //MessageBox.Show("Por favor aprete el boton de Restablecer");
                     Articulo seleccionado;
                     seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
                     frmAltaArticulo modificar = new frmAltaArticulo(seleccionado);
@@ -133,11 +103,6 @@ namespace TrabajoPracticoWinForm
                     cargar();
                 }
 
-                //Articulo seleccionado;
-                //seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-                //frmAltaArticulo modificar = new frmAltaArticulo(seleccionado);
-                //modificar.ShowDialog();
-                //cargar();
             }
             catch (Exception ex)
             {
@@ -168,15 +133,7 @@ namespace TrabajoPracticoWinForm
                     MessageBox.Show("Error en la selección del artículo");
                     txtFiltro.Text = ("");
                     cargar();
-                }
-
-                //DialogResult respuesta = MessageBox.Show("Se eliminara permanentemente de nuestra base de datos, ¿Estás seguro?", "Eliminar Articulo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                //if(respuesta == DialogResult.Yes)
-                //{
-                //    seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-                //    negocio.eliminar(seleccionado.ID);
-                //    cargar();
-                //}
+                }               
                 
             }
             catch (Exception ex)
@@ -193,13 +150,12 @@ namespace TrabajoPracticoWinForm
 
         private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cboCriterio.Items.Clear(); // Limpia las opciones del ComboBox de criterios
+            cboCriterio.Items.Clear(); 
 
             string opcion = cboCampo.SelectedItem.ToString();
 
             if (opcion == "Precio")
             {
-                // Añadimos criterios para rango de precio
                 cboCriterio.Items.Add("Mayor a");
                 cboCriterio.Items.Add("Menor a");
             }
@@ -213,7 +169,6 @@ namespace TrabajoPracticoWinForm
             }
             else
             {
-                // Para otros campos como "Codigo", "Nombre", etc.
                 cboCriterio.Items.Add("Comienza con");
                 cboCriterio.Items.Add("Termina con");
                 cboCriterio.Items.Add("Contiene");
@@ -251,9 +206,8 @@ namespace TrabajoPracticoWinForm
                     return;
 
                 string campo = cboCampo.SelectedItem.ToString();
-                string criterio = cboCriterio.SelectedItem?.ToString();  // Criterio puede ser nulo para algunos casos como Precio
-                string filtro = txtFiltro.Text;
-                // Llamada a filtrar con o sin filtroExtra dependiendo del campo
+                string criterio = cboCriterio.SelectedItem?.ToString();  
+                string filtro = txtFiltro.Text;               
                 dgvArticulos.DataSource = negocio.filtrar(campo, criterio, filtro);
             }
             catch (Exception ex)
@@ -356,20 +310,6 @@ namespace TrabajoPracticoWinForm
                     cargar();
                 }
 
-                //Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-                //VD.txtCodigo.Text = seleccionado.Codigo;
-                //VD.txtNombre.Text = seleccionado.Nombre.ToString();
-                //VD.txtDescripcion.Text = seleccionado.Descripcion.ToString();
-                //VD.txtMarca.Text = seleccionado.Marca.ToString();
-                //VD.txtCategoria.Text = seleccionado.Categoria.ToString();
-                //VD.txtPrecio.Text = seleccionado.Precio.ToString("F2");
-
-                //if (seleccionado.Imagen.ImagenUrl != "")
-                //{
-                //    VD.pbImagen.Load(seleccionado.Imagen.ImagenUrl);
-                //}
-                //VD.ShowDialog();
-                //cargar();
             }
             catch (Exception ex)
             {

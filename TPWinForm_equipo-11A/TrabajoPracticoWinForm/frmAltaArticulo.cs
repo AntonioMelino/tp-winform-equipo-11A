@@ -67,7 +67,6 @@ namespace TrabajoPracticoWinForm
 
         private void btnAceptarArticulo_Click(object sender, EventArgs e)
         {
-            //Articulo articulo = new Articulo();
             ArticuloNegocio negocio = new ArticuloNegocio();
 
             try
@@ -85,17 +84,13 @@ namespace TrabajoPracticoWinForm
                 articulo.Marca = (Marca)cboMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
                 articulo.Precio = decimal.Parse(txtPrecioArticulo.Text);
-                //articulo.Precio= Convert.ToDecimal(txtPrecioArticulo.Text);
                 if (articulo.ID != 0)
                 {
-                    //Imagen img = new Imagen();
                     ImgNegocio imgNegocio = new ImgNegocio();
                     if(cboImagenes.SelectedIndex != -1)
                     {  
                         articulo.Imagen = (Imagen)cboImagenes.SelectedItem;                       
-                        //img = imgNegocio.traerImg(articulo.Imagen.ID);
-                        articulo.Imagen.ImagenUrl = txtImagenUrl.Text; // FUNCIONA USANDO EL TXT DE LA IMAGEN DEL ALTA
-                        //img.IDArticulo = articulo.ID;
+                        articulo.Imagen.ImagenUrl = txtImagenUrl.Text; 
                         imgNegocio.modificar(articulo.Imagen);
                     }
                     negocio.modificar(articulo);
@@ -107,12 +102,6 @@ namespace TrabajoPracticoWinForm
                     int idart = negocio.traerArt();
                     Imagen img = new Imagen();
                     ImgNegocio imgNegocio = new ImgNegocio();
-                    // --
-                    //articulo.Imagen.IDArticulo = idart;
-                    //articulo.Imagen.ImagenUrl = txtImagenUrl.Text;
-                    //negocio.agregarImg(articulo);
-                    // -- AGREGAR IMG CON NEG DE ARTICULO O TRABAJANDO IMG INDIVIDUAL.
-                    // FUNCIONAN AMBOS.
                     img.IDArticulo = idart;
                     img.ImagenUrl = txtImagenUrl.Text;
                     imgNegocio.agregar(img);
@@ -165,8 +154,6 @@ namespace TrabajoPracticoWinForm
                     txtNombreArticulo.Text = articulo.Nombre;
                     txtDescripcionArticulo.Text = articulo.Descripcion;
                     txtPrecioArticulo.Text = articulo.Precio.ToString("F2");
-                    //txtImagenUrl.Text = articulo.Imagen.ImagenUrl;
-                    //articulo.Imagen = new Imagen();
                     cboImagenes.SelectedValue = articulo.Imagen.ID;
                     cboMarca.SelectedValue = articulo.Marca.ID;
                     cboCategoria.SelectedValue = articulo.Categoria.ID;

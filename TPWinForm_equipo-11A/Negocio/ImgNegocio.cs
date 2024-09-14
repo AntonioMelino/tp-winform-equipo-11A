@@ -98,7 +98,6 @@ namespace Negocio
 
                 if (datos.Lector.Read())
                 {
-                    // Leer el valor de "Id" de la primera fila
                      id = Convert.ToInt32(datos.Lector["Id"]);
                 }
                 return id;

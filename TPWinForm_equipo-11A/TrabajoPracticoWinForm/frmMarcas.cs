@@ -65,11 +65,7 @@ namespace TrabajoPracticoWinForm
                     cargar();
                 }
             }
-            //Marca seleccionada;
-            //seleccionada = (Marca)dgvMarcas.CurrentRow.DataBoundItem;
-            //frmAltaMarca modificar = new frmAltaMarca(seleccionada);
-            //modificar.ShowDialog();
-            //cargar();
+
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());

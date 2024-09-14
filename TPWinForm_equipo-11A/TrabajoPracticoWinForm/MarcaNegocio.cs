@@ -78,6 +78,7 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+        //public void modificar(int id, string descripcion)
         public void modificar(Marca marca)
         {
             AccesoDatos datos = new AccesoDatos();

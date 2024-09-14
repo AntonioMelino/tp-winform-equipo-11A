@@ -19,7 +19,6 @@ namespace TrabajoPracticoWinForm
 
             try
             {
-                //datos.setearConsulta("SELECT DISTINCT A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion as NombreMarca, C.Descripcion as NombreCategoria, Precio, (SELECT TOP 1 ImagenUrl FROM IMAGENES WHERE IdArticulo = A.Id) as ImagenUrl, A.IdMarca, A.IdCategoria FROM ARTICULOS as A, CATEGORIAS AS C, MARCAS AS M, IMAGENES AS I WHERE A.IdMarca = M.Id AND A.IdCategoria = C.Id AND A.Id = I.IdArticulo");
                 datos.setearConsulta("SELECT A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion as NombreMarca, C.Descripcion as NombreCategoria, Precio, (SELECT TOP 1 ImagenUrl FROM IMAGENES WHERE IdArticulo = A.Id) as ImagenUrl, A.IdMarca, A.IdCategoria FROM ARTICULOS as A JOIN CATEGORIAS AS C ON A.IdCategoria = C.Id JOIN MARCAS AS M ON A.IdMarca = M.Id");
                 datos.ejecutarLectura();
 
@@ -153,13 +152,11 @@ namespace TrabajoPracticoWinForm
 
             try
             {
-                string consulta = "SELECT A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion as NombreMarca, C.Descripcion as NombreCategoria, Precio, ImagenUrl, A.IdMarca, A.IdCategoria, A.Id FROM ARTICULOS as A, CATEGORIAS AS C, MARCAS AS M, IMAGENES AS I WHERE A.IdMarca = M.Id AND A.IdCategoria = C.Id AND A.Id = I.IdArticulo AND ";
-
+                string consulta = "SELECT A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion as NombreMarca, C.Descripcion as NombreCategoria, Precio, MIN(I.ImagenUrl) as ImagenUrl, A.IdMarca, A.IdCategoria " + "FROM ARTICULOS as A " + "INNER JOIN CATEGORIAS AS C ON A.IdCategoria = C.Id " + "INNER JOIN MARCAS AS M ON A.IdMarca = M.Id " + "LEFT JOIN IMAGENES AS I ON A.Id = I.IdArticulo WHERE ";
                 switch (campo)
                 {
                     case "Codigo":
-                    case "Nombre":
-                    case "Descripcion":
+                    case "Nombre":                    
                         switch (criterio)
                         {
                             case "Comienza con":
@@ -176,11 +173,11 @@ namespace TrabajoPracticoWinForm
                     case "Precio":
                         if (criterio == "Mayor a")
                         {
-                            consulta += "Precio > " + filtro;
+                            consulta += "Precio IS NOT NULL AND Precio > " + filtro;
                         }
                         else if (criterio == "Menor a")
                         {
-                            consulta += "Precio < " + filtro;
+                            consulta += "Precio IS NOT NULL AND Precio < " + filtro;
                         }
                         break;
                     case "Marca":
@@ -198,25 +195,59 @@ namespace TrabajoPracticoWinForm
                         }
                         break;
                 }
+
+                consulta += " GROUP BY A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion, C.Descripcion, Precio, A.IdMarca, A.IdCategoria";
+
                 datos.setearConsulta(consulta);
                 datos.ejecutarLectura();
 
+                //while (datos.Lector.Read())
+                //{
+                //    Articulo aux = new Articulo();
+                //    aux.Marca = new Marca();
+                //    aux.Categoria = new Categoria();
+                //    aux.Imagen = new Imagen();
+                //    aux.ID = (int)datos.Lector["Id"];
+                //    aux.Codigo = (string)datos.Lector["Codigo"];
+                //    aux.Nombre = (string)datos.Lector["Nombre"];
+                //    aux.Descripcion = (string)datos.Lector["Descripcion"];
+                //    aux.Marca.ID = (int)datos.Lector["IdMarca"];
+                //    aux.Marca.Descripcion = datos.Lector["NombreMarca"].ToString();
+                //    aux.Categoria.ID = (int)datos.Lector["IdCategoria"];
+                //    aux.Categoria.Descripcion = datos.Lector["NombreCategoria"].ToString();
+                //    aux.Precio = (decimal)datos.Lector["Precio"];
+                //    aux.Imagen.ImagenUrl = (string)datos.Lector["ImagenUrl"];
+                //    lista.Add(aux);
+                //}
                 while (datos.Lector.Read())
                 {
                     Articulo aux = new Articulo();
                     aux.Marca = new Marca();
                     aux.Categoria = new Categoria();
                     aux.Imagen = new Imagen();
+
                     aux.ID = (int)datos.Lector["Id"];
-                    aux.Codigo = (string)datos.Lector["Codigo"];
-                    aux.Nombre = (string)datos.Lector["Nombre"];
-                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    aux.Codigo = datos.Lector["Codigo"] != DBNull.Value ? (string)datos.Lector["Codigo"] : string.Empty;
+                    aux.Nombre = datos.Lector["Nombre"] != DBNull.Value ? (string)datos.Lector["Nombre"] : string.Empty;
+                    aux.Descripcion = datos.Lector["Descripcion"] != DBNull.Value ? (string)datos.Lector["Descripcion"] : string.Empty;
+
                     aux.Marca.ID = (int)datos.Lector["IdMarca"];
                     aux.Marca.Descripcion = datos.Lector["NombreMarca"].ToString();
+
                     aux.Categoria.ID = (int)datos.Lector["IdCategoria"];
                     aux.Categoria.Descripcion = datos.Lector["NombreCategoria"].ToString();
-                    aux.Precio = (decimal)datos.Lector["Precio"];
-                    aux.Imagen.ImagenUrl = (string)datos.Lector["ImagenUrl"];
+
+                    if (datos.Lector["Precio"] != DBNull.Value)
+                    {
+                        aux.Precio = (decimal)datos.Lector["Precio"];
+                    }
+                    else
+                    {
+                        aux.Precio = 0;
+                    }
+                    
+                    aux.Imagen.ImagenUrl = datos.Lector["ImagenUrl"] != DBNull.Value ? (string)datos.Lector["ImagenUrl"] : string.Empty;
+
                     lista.Add(aux);
                 }
 
@@ -250,25 +281,6 @@ namespace TrabajoPracticoWinForm
                 throw;
             }
         }
-        //public void agregarImg(Articulo nuevo)
-        //{
-        //    AccesoDatos datos = new AccesoDatos();
-
-        //    try
-        //    {
-        //        datos.setearConsulta("INSERT INTO IMAGENES VALUES (@IdArticulo, @ImagenUrl)");
-        //        datos.setearParametro("@IdArticulo", nuevo.Imagen.IDArticulo);
-        //        datos.setearParametro("@ImagenUrl", nuevo.Imagen.ImagenUrl);
-        //        datos.ejecutarAccion();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //    finally
-        //    {
-        //        datos.cerrarConexion();
-        //    }
-        //}
+ 
     }
 }

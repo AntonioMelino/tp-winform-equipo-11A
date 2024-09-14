@@ -64,11 +64,7 @@ namespace TrabajoPracticoWinForm
                     cargar();
                 }
             }
-            //Categoria seleccionada;
-            //seleccionada = (Categoria)dgvCategoria.CurrentRow.DataBoundItem;
-            //frmAltaCategoria modificar = new frmAltaCategoria(seleccionada);
-            //modificar.ShowDialog();
-            //cargar();
+
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
