@@ -184,14 +184,14 @@ namespace TrabajoPracticoWinForm
                         if (criterio == "Igual a")
                         {
 
-                            consulta += "A.IdMarca = (SELECT Id FROM MARCAS WHERE Descripcion = '" + filtro + "')";
+                            consulta += "A.IdMarca IN (SELECT Id FROM MARCAS WHERE Descripcion LIKE '%" + filtro + "%')";
                         }
                         break;
 
                     case "Categoria":
                         if (criterio == "Igual a")
                         {
-                            consulta += "A.IdCategoria = (SELECT Id FROM CATEGORIAS WHERE Descripcion = '" + filtro + "')";
+                            consulta += "A.IdCategoria IN (SELECT Id FROM CATEGORIAS WHERE Descripcion LIKE '%" + filtro + "%')";
                         }
                         break;
                 }
